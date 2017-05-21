@@ -1,0 +1,13 @@
+.info-img{
+    text-align: center;
+    img{
+        width: 150px;
+        height: 200px;
+    }
+    @include breakpoint(mobile){
+        img{
+            width : 100%;
+            height: auto;
+        }
+    }
+}
