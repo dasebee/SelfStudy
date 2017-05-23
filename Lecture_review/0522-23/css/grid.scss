@@ -1,0 +1,61 @@
+@import 'setting';
+/*Toggle grid Module*/
+.show-grid{
+    position:relative;
+}
+.show-grid::before,
+.show-grid::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    height: $guide-height;
+}
+.show-grid::before{
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background: linear-gradient(180deg,transparent 20px, tomato 20px);
+    background-size: 1px $leading;
+}
+.show-grid::after{
+    width: $page-width;
+    z-index: 10010;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent $half-gutter-width, $column-color $half-gutter-width, $column-color $column-width + $half-gutter-width, transparent $half-gutter-width);
+    background-size: $column-width + $gutter-width 1px;
+}
+/*Container Module*/
+.container{
+    width: $page-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*Row Module*/
+.row{
+    &::after{
+    content : ''; 
+    display : block;
+    clear : both;
+    }
+    .is-nesting {
+     & > :first-child {
+        margin-left : 0;
+     }
+     & > :last-child{
+         margin-right: 0;
+     }
+    }
+}
+/*Column Module*/
+.col {
+    float: left;
+    margin-left: $half-gutter-width;
+    margin-right: $half-gutter-width;
+}
+@for $i from 1 through $columns {
+    //column 폭
+    .is-#{$i} { width : column-width($i)}
+    //offset 폭
+    .is-offset-#{$i} { margin-left: offset-width($i)}
+}
