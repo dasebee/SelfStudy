@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Youyu.com - Shopping mall</title>
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/init.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="show-grid">
+    <div class="container">
+        <header class="header">
+            <div class="row top">
+                <h1 class="col is-3"><a href="index.html"><img class="logo" src="./images/header/logo.svg" alt="youyo.com"></a></h1>
+                <form class="col is-6">
+                    <fieldset>
+                        <legend class="a11y-hidden">검색 영역</legend>
+                        <input type="search" placeholder="검색어를 입력하세요.">
+                        <button type="submint">검색</button>
+                    </fieldset>
+                </form>
+                <ul class="col is-2 is-offset-1">
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                </ul>
+            </div>
+            <nav class="row main-menu">
+                <ul class="col is-12">
+                    <li><a href="#">MAIN</a></li>
+                    <li><a href="#">BRAND</a></li>
+                    <li><a href="#">SPECIAL</a></li>
+                    <li><a href="#">OUTER</a></li>
+                    <li><a href="#">TOPS</a></li>
+                    <li><a href="#">BOTTOM</a></li>
+                    <li><a href="#">DRESS</a></li>
+                    <li><a href="#">SHOES</a></li>
+                    <li><a href="#">BAG</a></li>
+                    <li><a href="#">ACC</a></li>
+                    <li><a href="#">SUMMER</a></li>
+                    <li><a href="#">ETC</a></li>
+                </ul>
+            </nav>
+            <div class="filter toggle">
+                <div class="row filter-select">
+                    <div class="col is-2 is-offset-5">필터 선택하세요</div>
+                </div>
+                <div class="row filter-age hidden">
+                    <div class="col is-4">연령</div>
+                </div>
+                <div class="row filter-style hidden">
+                    <div class="col is-8">스타일</div>
+                </div>
+                <div class="row filter-btn hidden">
+                    <div class="col is-4 is-offset-4">버튼</div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="banner">
+                <div class="row banner-img">
+                    <div class="col is-12">배너이미지</div>
+                </div>
+                <div class="row banner-btn">
+                    <div class="col is-4 is-offset-4">배너 선택버튼 </div>
+                </div>
+            </div>
+            <div class="best-item">
+                <div class="row best-item-title">
+                    <div class="col is-2">베스트셀러</div>
+                </div>
+                <div class="row best-item-list">
+                    <div class="col is-3">베스트셀러 상품1</div>
+                    <div class="col is-3">베스트셀러 상품2</div>
+                    <div class="col is-3">베스트셀러 상품3</div>
+                    <div class="col is-3">베스트셀러 상품4</div>
+                </div>
+            </div>
+            <div class="brand">
+                <div class="row brand-title">
+                    <div class="col is-2">브랜드</div>
+                </div>
+                <div class="row brand-list">
+                    <div class="col is-3">브랜드1</div>
+                    <div class="col is-3">브랜드2</div>
+                    <div class="col is-3">브랜드3</div>
+                    <div class="col is-3">브랜드4</div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/toggleGrid.js"></script>
+</body>
+</html>
