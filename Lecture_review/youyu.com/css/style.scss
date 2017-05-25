@@ -2,13 +2,14 @@
 .container{
     padding-top: $leading * 2;
 }
-.col{
-    background: hsla(200, 100%, 64%, 0.3);
-}
+// .col{
+//     background: hsla(200, 100%, 64%, 0.3);
+// }
 a{
     color: inherit;
     text-decoration: none;
 }
+
 /*Header*/
 .top{
     margin-bottom: $leading * 2;
@@ -29,31 +30,63 @@ a{
         width: 380px;
         border: none; 
         position: relative;
+     
+        &:after{
+        content: '';
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 14px;
+        height: 14px;
+        background: url(../images/icons/icons.svg) no-repeat;
+        background-size: 20px auto;
+        background-position-y: -142px;
+        overflow:hidden;
+    }
     }
     input{
         height: 42px;
         width: 380px;
         border: 2px solid#555656;
+        color:#999999;
     }
     button{
         position: absolute;
-        top:14px;
-        right:14px;
-        width: 14px;
-        height: 14px;
+        overflow: hidden;
+        top:0;
+        right: 0;
+        width: 42px;
+        height: 42px;
+        background: none;
+        border: none;
+        font-size: 0;
+        cursor: pointer;
     }
     ul{
         margin-top: 0;
         margin-bottom: 0;
         padding-left: 0;
         list-style: none;
-        text-align: center;
+        color: #991717;
+        font-weight: bold;
     }
     li{
         margin-top: $leading;
+        margin-left: 5px;
         display: inline-block;
+        a{
+            padding: 5px 10px;
+            &:hover, &:focus{
+                border: 1px solid #991717;
+                border-radius: 2px;
+            }
+        }
+        &:last-child{
+            margin-left: 15px;
+        }
     }
 }
+/*header-navigation*/ 
 .main-menu{
     margin-bottom: $leading;
     ul{
@@ -64,41 +97,159 @@ a{
     }
     li{
         display: inline-block;
+        width: 64px;
+        letter-spacing: -0.3px;
+        text-align: center;
+        position: relative;
+        margin-right: 21px;
+        a{
+            position: absolute;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            top:-20px;
+            left:0;
+            display: block;
+            &:focus{
+                background: #bd1d31;
+                border-radius: 2px;
+                color: #fff;
+            }
+            &:hover,&:active{
+                border-bottom: 2px solid #bd1d31;
+            }
+    }
     }
 }
 /*heder-filter*/
-.filter-age, .filter-btn{
-    margin-bottom: 21px;
-}
-.filter-select, .filter-style {
-    margin-bottom: $leading * 2;
-}
-.filter-select .col, .filter-btn .col{
-    height: $leading * 2;
-}
-.hidden{
-    display: none;
-}
+  .filter-toggle{
+        position: relative;
+        margin-left: 10px;
+        width: 1060px;
+        height: $leading * 2;
+        line-height: $leading * 2;
+        background: #ddd;
+        color: #991717;
+        border-top: 3px solid #bd1d31;
+        position: relative;
+        &:before{
+            position: absolute;
+            left: 440px;
+            top: 14px;
+            content:'';
+            width: 16px;
+            height: 14px;
+            background: url(../images/icons/icons.svg) no-repeat;
+            background-size: 20px auto;
+            background-position: 0 -62px;
+
+        }
+        #toggle{
+           display: none;
+        }
+        #toggle:checked ~ .filter-show{
+            display: block;
+        }
+        label{
+            cursor: pointer;
+        }
+        .filter-show{
+            display: none;
+            background: #ddd;
+            position: absolute;
+            top: 39px;
+            left: -10px;
+            .filter-age, .filter-btn{
+                margin-bottom: 21px;
+            }
+            .filter-select, .filter-style {
+                margin-bottom: $leading * 2;
+            }
+            .filter-btn {
+                .col{
+                height: $leading * 2;
+                }   
+            }
+        }
+    }
+
 /*main*/
 /*배너*/
 .banner-img{
+    margin-top: 42px;
     margin-bottom: 21px;
-}
-.banner-img .col{
-    height: 441px;
+    .col{
+        height: 441px;
+    }
 }
 .banner-btn{
     margin-bottom: $leading * 2;
+    text-align: center;
+    a{
+        display: inline-block;
+        width:10px;
+        height: 0px;
+        padding-top: 10px;
+        margin-right: 10px;
+        overflow: hidden;
+        background: #cccccc;
+        border-radius: 100%;
+    }
+    a:hover, a:focus{
+        background: #bd1d31;
+    }
 }
 /*베스트셀러*/
-.best-item-title{
-    margin-bottom: 21px;
-}
-.best-item-list{
-    margin-bottom: $leading * 2;
-}
-.best-item-list .col{
-    height: 357px;
+.best-item{
+    .best-item-title{
+        margin-top: -10px;
+        margin-bottom: 21px;
+        font-size: 2.2rem;
+        color: #333333;
+    }
+    .best-item-list{
+        margin-top: -5px;
+        margin-bottom: $leading * 2;
+        text-align: center;
+        .col{
+            position: relative;
+            display: block;
+            height: $leading*17; 
+            border: 1px solid #ddd;
+        }
+        img{
+            margin-top: $leading;
+            margin-bottom: $leading - 6px;
+        }
+        p{
+            text-align: left;
+            margin-left: 21px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        p:nth-child(3){
+            margin-bottom: $leading - 3px;
+        }
+        label{
+            position: absolute;
+            cursor: pointer;
+            width: 20px;
+            height: 0px;
+            padding-top: 15px;
+            bottom: 23px;
+            right: 18px;
+            background: url(../images/icons/icons.svg) no-repeat;
+            background-size: 20px auto;
+            background-position-y: -110px; 
+            overflow: hidden;
+        }
+        input{
+            display: none;
+        }
+        input:checked + label{ 
+             background-position-y: -96px;
+        }
+    }
 }
 /*브랜드*/
 .brand-title{
@@ -106,4 +257,25 @@ a{
 }
 .brand-list .col{
     height: 147px  
+}
+
+
+//상품 공통 요소
+.item-title{
+    color:#333;
+}
+.item-brief{
+    color:#666;
+}
+.item-price{
+    font-size: 1.8rem;
+    color:#991717;
+}
+.product a{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.product a:hover{
+    border:2px solid #bd1d31;
 }

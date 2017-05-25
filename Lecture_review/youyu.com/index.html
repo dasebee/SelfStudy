@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/grid.css">
     <link rel="stylesheet" href="./css/init.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link href="//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css" rel="stylesheet" type="text/css">
 </head>
 <body class="show-grid">
     <div class="container">
@@ -42,28 +43,34 @@
                     <li><a href="#">ETC</a></li>
                 </ul>
             </nav>
-            <div class="filter toggle">
-                <div class="row filter-select">
-                    <div class="col is-2 is-offset-5">필터 선택하세요</div>
+                <div class="row filter-toggle">
+                    <label for="toggle" class="col is-2 is-offset-5">필터를 선택하세요</label>
+                    <input type="checkbox" id="toggle">
+                    <div class="filter-show col is-12">
+                        <div class="row filter-age is-nesting">
+                            <div class="col is-4">
+                                연령
+                            </div>
+                        </div>
+                        <div class="row filter-style is-nesting">
+                            <div class="col is-8">스타일</div>
+                        </div>
+                        <div class="row filter-btn is-nesting">
+                            <div class="col is-4 is-offset-4">버튼</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="row filter-age hidden">
-                    <div class="col is-4">연령</div>
-                </div>
-                <div class="row filter-style hidden">
-                    <div class="col is-8">스타일</div>
-                </div>
-                <div class="row filter-btn hidden">
-                    <div class="col is-4 is-offset-4">버튼</div>
-                </div>
-            </div>
         </header>
         <main class="main">
             <div class="banner">
                 <div class="row banner-img">
-                    <div class="col is-12">배너이미지</div>
+                    <div class="col is-12"><img src="../youyu.com/images/banner/banner-01.jpg" alt="인기 상품 20% sale 2016.09.22 PM08:00 ~ 08:50 "></div>
                 </div>
                 <div class="row banner-btn">
-                    <div class="col is-4 is-offset-4">배너 선택버튼 </div>
+                    <div class="col is-4 is-offset-4">
+                    <a href="#">배너1선택</a><a href="#">배너2선택</a><a href="#">배너3선택</a><a href="#">배너4선택</a><a href="#">배너5선택</a><a href="#">배너6선택</a>
+                    <a href="#">배너7선택</a><a href="#">배너8선택</a><a href="#">배너9선택</a><a href="#">배너10선택</a>
+                </div>
                 </div>
             </div>
             <div class="best-item">
@@ -71,10 +78,46 @@
                     <div class="col is-2">베스트셀러</div>
                 </div>
                 <div class="row best-item-list">
-                    <div class="col is-3">베스트셀러 상품1</div>
-                    <div class="col is-3">베스트셀러 상품2</div>
-                    <div class="col is-3">베스트셀러 상품3</div>
-                    <div class="col is-3">베스트셀러 상품4</div>
+                    <div class="col is-3 product">
+                        <a href="#">
+                            <img src="../youyu.com/images/best-seller/bs-seller-01.jpg" alt="코튼니트 39000원">
+                            <p class="item-title">Zemma World</p>
+                            <p class="item-brief">Puppy-코튼니트</p>
+                            <p class="item-price">39,000원</p>
+                        </a>
+                        <input type="checkbox" id="btn-like1">
+                        <label for="btn-like1">좋아요</label>
+                    </div>
+                    <div class="col is-3 product">
+                        <a href="#">
+                            <img src="../youyu.com/images/best-seller/bs-seller-02.jpg" alt="버튼 체크 원피스 41000원">
+                            <p class="item-title">myblin</p>
+                            <p class="item-brief">버튼 체크 원피스</p>
+                            <p class="item-price">41,000원</p>
+                        </a>
+                        <input type="checkbox" id="btn-like2">
+                        <label for="btn-like2">좋아요</label>
+                    </div>
+                    <div class="col is-3 product">
+                        <a href="#">
+                            <img src="../youyu.com/images/best-seller/bs-seller-03.jpg" alt="아미라벨 맨트맨 12500원">
+                            <p class="item-title">BULLAN GIRL</p>
+                            <p class="item-brief">아미라벨맨투맨</p>
+                            <p class="item-price">12,500원</p>
+                        </a>
+                        <input type="checkbox" id="btn-like3">
+                        <label for="btn-like3">좋아요</label>
+                    </div>
+                    <div class="col is-3 product">
+                        <a href="#">
+                            <img src="../youyu.com/images/best-seller/bs-seller-04.jpg" alt="스키니 팬츠 29900원">
+                            <p class="item-title">MINIBBONG</p>
+                            <p class="item-brief">Night-스키니팬츠</p>
+                            <p class="item-price">29,900원</p>
+                        </a>
+                        <input type="checkbox" id="btn-like4">
+                        <label for="btn-like4">좋아요</label>
+                    </div>
                 </div>
             </div>
             <div class="brand">
