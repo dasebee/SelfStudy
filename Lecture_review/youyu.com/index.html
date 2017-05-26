@@ -43,24 +43,37 @@
                     <li><a href="#">ETC</a></li>
                 </ul>
             </nav>
-                <div class="row filter-toggle">
-                    <label for="toggle" class="col is-2 is-offset-5">필터를 선택하세요</label>
-                    <input type="checkbox" id="toggle">
-                    <div class="filter-show col is-12">
-                        <div class="row filter-age is-nesting">
-                            <div class="col is-4">
-                                연령
-                            </div>
-                        </div>
-                        <div class="row filter-style is-nesting">
-                            <div class="col is-8">스타일</div>
-                        </div>
-                        <div class="row filter-btn is-nesting">
-                            <div class="col is-4 is-offset-4">버튼</div>
-                        </div>
-                    </div>
-                </div>
         </header>
+      </div>
+        <div class="row filter-toggle">
+            <label for="toggle">필터를 선택하세요</label>
+            <input type="checkbox" id="toggle" class="a11y-hidden">
+            <form class="row filter-show">
+            <fieldset>
+                <legend class="a11y-hidden">연령과 스타일 필터</legend>
+                <dl class ="age-filter">
+                    <dt>연령</dt>
+                    <dd><input type="checkbox" id="age1"><label for="age1">10대</label></dd>
+                    <dd><input type="checkbox" id="age2"><label for="age2">20대</label></dd>
+                    <dd><input type="checkbox" id="age3"><label for="age3">30대</label></dd>
+                </dl>
+                <dl class="style-filter">
+                    <dt>스타일</dt>
+                    <dd><input type="checkbox" id="style1"><label for="style1">소녀룩</label></dd>
+                    <dd><input type="checkbox" id="style2"><label for="style2">모던시크</label></dd>
+                    <dd><input type="checkbox" id="style3"><label for="style3">심플베이지</label></dd>
+                    <dd><input type="checkbox" id="style4"><label for="style4">로맨틱</label></dd>
+                    <dd><input type="checkbox" id="style5"><label for="style5">오피스룩</label></dd>
+                    <dd><input type="checkbox" id="style6"><label for="style6">캠퍼스룩</label></dd>
+                    <dd><input type="checkbox" id="style7"><label for="style7">빈티지</label></dd>
+                    <dd><input type="checkbox" id="style8"><label for="style8">트레이닝</label></dd>
+                </dl>
+                <input type="reset" value="초기화">
+                <button type="submit">필터 선택 완료</button>
+            </fieldset>
+        </form>
+      </div>
+    <div class="container">
         <main class="main">
             <div class="banner">
                 <div class="row banner-img">
@@ -77,8 +90,8 @@
                 <div class="row best-item-title">
                     <div class="col is-2">베스트셀러</div>
                 </div>
-                <div class="row best-item-list">
-                    <div class="col is-3 product">
+                <ul class="row best-item-list">
+                    <li class="col is-3 product">
                         <a href="#">
                             <img src="../youyu.com/images/best-seller/bs-seller-01.jpg" alt="코튼니트 39000원">
                             <p class="item-title">Zemma World</p>
@@ -87,8 +100,8 @@
                         </a>
                         <input type="checkbox" id="btn-like1">
                         <label for="btn-like1">좋아요</label>
-                    </div>
-                    <div class="col is-3 product">
+                    </li>
+                    <li class="col is-3 product">
                         <a href="#">
                             <img src="../youyu.com/images/best-seller/bs-seller-02.jpg" alt="버튼 체크 원피스 41000원">
                             <p class="item-title">myblin</p>
@@ -97,8 +110,8 @@
                         </a>
                         <input type="checkbox" id="btn-like2">
                         <label for="btn-like2">좋아요</label>
-                    </div>
-                    <div class="col is-3 product">
+                    </li>
+                    <li class="col is-3 product">
                         <a href="#">
                             <img src="../youyu.com/images/best-seller/bs-seller-03.jpg" alt="아미라벨 맨트맨 12500원">
                             <p class="item-title">BULLAN GIRL</p>
@@ -107,8 +120,8 @@
                         </a>
                         <input type="checkbox" id="btn-like3">
                         <label for="btn-like3">좋아요</label>
-                    </div>
-                    <div class="col is-3 product">
+                    </li>
+                    <li class="col is-3 product">
                         <a href="#">
                             <img src="../youyu.com/images/best-seller/bs-seller-04.jpg" alt="스키니 팬츠 29900원">
                             <p class="item-title">MINIBBONG</p>
@@ -117,8 +130,8 @@
                         </a>
                         <input type="checkbox" id="btn-like4">
                         <label for="btn-like4">좋아요</label>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
             <div class="brand">
                 <div class="row brand-title">

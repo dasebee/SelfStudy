@@ -101,7 +101,10 @@ a{
         letter-spacing: -0.3px;
         text-align: center;
         position: relative;
-        margin-right: 21px;
+        margin-right: 20px;
+        &:last-child{
+            margin-right: 0;
+        }
         a{
             position: absolute;
             width: 100%;
@@ -121,20 +124,19 @@ a{
     }
     }
 }
-/*heder-filter*/
+//필터
   .filter-toggle{
         position: relative;
-        margin-left: 10px;
-        width: 1060px;
+        width: 100%;
+        text-align: center;
         height: $leading * 2;
-        line-height: $leading * 2;
         background: #ddd;
         color: #991717;
         border-top: 3px solid #bd1d31;
         position: relative;
         &:before{
             position: absolute;
-            left: 440px;
+            left: 690px;
             top: 14px;
             content:'';
             width: 16px;
@@ -144,32 +146,40 @@ a{
             background-position: 0 -62px;
 
         }
-        #toggle{
-           display: none;
-        }
-        #toggle:checked ~ .filter-show{
-            display: block;
-        }
         label{
             cursor: pointer;
         }
+       >label{
+        line-height: $leading * 2;
+       }
+        #toggle:checked ~ .filter-show{
+            display: block;
+        }
+      
         .filter-show{
             display: none;
             background: #ddd;
-            position: absolute;
-            top: 39px;
-            left: -10px;
-            .filter-age, .filter-btn{
-                margin-bottom: 21px;
-            }
-            .filter-select, .filter-style {
-                margin-bottom: $leading * 2;
-            }
-            .filter-btn {
-                .col{
-                height: $leading * 2;
-                }   
-            }
+      
+        }
+        fieldset{
+            margin: -3px auto 0 auto;
+            padding: $leading 0 0 0;
+            border: none;
+            width: 1060px;
+            background: yellow;
+        }
+        dl{
+            margin: 0;
+            display: flex;
+        }
+        .age-filter{
+            margin-bottom: $leading;
+        }
+        .style-filter{
+            margin-bottom: $leading*2;
+        }
+        button{
+            margin-bottom: $leading;
         }
     }
 
@@ -210,6 +220,7 @@ a{
     .best-item-list{
         margin-top: -5px;
         margin-bottom: $leading * 2;
+        padding-left: 0;
         text-align: center;
         .col{
             position: relative;

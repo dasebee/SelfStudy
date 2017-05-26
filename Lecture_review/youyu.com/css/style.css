@@ -97,7 +97,10 @@ a {
   letter-spacing: -0.3px;
   text-align: center;
   position: relative;
-  margin-right: 21px; }
+  margin-right: 20px; }
+
+.main-menu li:last-child {
+  margin-right: 0; }
 
 .main-menu li a {
   position: absolute;
@@ -116,13 +119,11 @@ a {
 .main-menu li a:hover, .main-menu li a:active {
   border-bottom: 2px solid #bd1d31; }
 
-/*heder-filter*/
 .filter-toggle {
   position: relative;
-  margin-left: 10px;
-  width: 1060px;
+  width: 100%;
+  text-align: center;
   height: 42px;
-  line-height: 42px;
   background: #ddd;
   color: #991717;
   border-top: 3px solid #bd1d31;
@@ -130,7 +131,7 @@ a {
 
 .filter-toggle:before {
   position: absolute;
-  left: 440px;
+  left: 690px;
   top: 14px;
   content: '';
   width: 16px;
@@ -139,30 +140,38 @@ a {
   background-size: 20px auto;
   background-position: 0 -62px; }
 
-.filter-toggle #toggle {
-  display: none; }
+.filter-toggle label {
+  cursor: pointer; }
+
+.filter-toggle > label {
+  line-height: 42px; }
 
 .filter-toggle #toggle:checked ~ .filter-show {
   display: block; }
 
-.filter-toggle label {
-  cursor: pointer; }
-
 .filter-toggle .filter-show {
   display: none;
-  background: #ddd;
-  position: absolute;
-  top: 39px;
-  left: -10px; }
+  background: #ddd; }
 
-.filter-toggle .filter-show .filter-age, .filter-toggle .filter-show .filter-btn {
+.filter-toggle fieldset {
+  margin: -3px auto 0 auto;
+  padding: 21px 0 0 0;
+  border: none;
+  width: 1060px;
+  background: yellow; }
+
+.filter-toggle dl {
+  margin: 0;
+  display: flex; }
+
+.filter-toggle .age-filter {
   margin-bottom: 21px; }
 
-.filter-toggle .filter-show .filter-select, .filter-toggle .filter-show .filter-style {
+.filter-toggle .style-filter {
   margin-bottom: 42px; }
 
-.filter-toggle .filter-show .filter-btn .col {
-  height: 42px; }
+.filter-toggle button {
+  margin-bottom: 21px; }
 
 /*main*/
 /*배너*/
@@ -200,6 +209,7 @@ a {
 .best-item .best-item-list {
   margin-top: -5px;
   margin-bottom: 42px;
+  padding-left: 0;
   text-align: center; }
 
 .best-item .best-item-list .col {
