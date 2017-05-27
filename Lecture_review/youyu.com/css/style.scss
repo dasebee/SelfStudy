@@ -74,7 +74,7 @@ a{
         margin-top: $leading;
         margin-left: 5px;
         display: inline-block;
-        a{
+        a{  
             padding: 5px 10px;
             &:hover, &:focus{
                 border: 1px solid #991717;
@@ -82,7 +82,7 @@ a{
             }
         }
         &:last-child{
-            margin-left: 15px;
+            margin-left: 10px;
         }
     }
 }
@@ -98,7 +98,6 @@ a{
     li{
         display: inline-block;
         width: 64px;
-        letter-spacing: -0.3px;
         text-align: center;
         position: relative;
         margin-right: 20px;
@@ -146,11 +145,12 @@ a{
             background-position: 0 -62px;
 
         }
-        label{
+
+       label{
             cursor: pointer;
-        }
+       }
        >label{
-        line-height: $leading * 2;
+          line-height: $leading * 2;
        }
         #toggle:checked ~ .filter-show{
             display: block;
@@ -166,11 +166,27 @@ a{
             padding: $leading 0 0 0;
             border: none;
             width: 1060px;
-            background: yellow;
         }
         dl{
             margin: 0;
             display: flex;
+            color: #fff;
+          label{
+            display: block;
+            font-size: 1.2rem;
+            width: 70px;
+            height: $leading;
+            line-height: $leading;
+            background: #aaa;
+            border-radius: 2px;
+           }
+         input:checked ~ label, label:hover{
+             background: #bd1d31;
+             }
+        }
+        dt{
+            color: #333;
+            font-size: 1.6rem;
         }
         .age-filter{
             margin-bottom: $leading;
@@ -178,8 +194,26 @@ a{
         .style-filter{
             margin-bottom: $leading*2;
         }
-        button{
+        .reset-btn, .submit-btn{
+            border-radius: 15.5px;
+            border: none;
+            padding: 0;
+            height: 31px;
+            background: #aaa;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .reset-btn{
+            margin-right: 10px;
+            width: 85px;
+        }
+        .submit-btn{
             margin-bottom: $leading;
+            width: 129px;
+        }
+        .reset-btn:hover,.submit-btn:hover{
+            background: #bd1d31;
         }
     }
 
@@ -209,16 +243,35 @@ a{
         background: #bd1d31;
     }
 }
+/*좋아요 버튼 공통 요소*/
+[class*="group"] label{
+    position: absolute;
+    cursor: pointer;
+    width: 20px;
+    height: 0px;
+    padding-top: 15px;
+    background: url(../images/icons/icons.svg) no-repeat;
+    background-size: 20px auto;
+    background-position-y: -110px; 
+    overflow: hidden;
+}
+[class*="group"] input:checked + label{ 
+    background-position-y: -96px;
+}
 /*베스트셀러*/
-.best-item{
-    .best-item-title{
-        margin-top: -10px;
+.best-item, .new-item{
+    .best-item-title, .new-item-title{
         margin-bottom: 21px;
-        font-size: 2.2rem;
-        color: #333333;
+        h3{
+          margin-top: 0;
+          margin-bottom: 0;
+          font-weight: normal;
+          font-size: 2.2rem;
+          height: 21px;
+          color: #333333;
+        }
     }
-    .best-item-list{
-        margin-top: -5px;
+    .best-item-group, .new-item-group{
         margin-bottom: $leading * 2;
         padding-left: 0;
         text-align: center;
@@ -242,51 +295,95 @@ a{
             margin-bottom: $leading - 3px;
         }
         label{
-            position: absolute;
-            cursor: pointer;
-            width: 20px;
-            height: 0px;
-            padding-top: 15px;
             bottom: 23px;
             right: 18px;
-            background: url(../images/icons/icons.svg) no-repeat;
-            background-size: 20px auto;
-            background-position-y: -110px; 
-            overflow: hidden;
-        }
-        input{
-            display: none;
-        }
-        input:checked + label{ 
-             background-position-y: -96px;
         }
     }
+    .item-title{
+        color:#333;
+    }
+    .item-brief{
+        color:#666;
+    }
+    .item-price{
+        font-size: 1.8rem;
+        color:#991717;
+    }
+    a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    a:hover{
+      border:2px solid #bd1d31;   
+    }
 }
+
 /*브랜드*/
+.brand{
+    position: relative;
+    &:after, &:before{
+        content: "";
+        height: 7 * $leading;
+        width: 22px;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+        position: absolute;
+        top:$leading * 2;
+        background: #f0f0f0 url(../images/icons/arrow.png) no-repeat;
+    }
+    &:before{
+        left: -20px;
+        background-position: 7px 69px;
+    }
+    &:after{
+        right: -20px;
+        background-position: -13px 69px;
+    }
+}
 .brand-title{
     margin-bottom: 21px;
+    h3{
+        margin-top: 0;
+        margin-bottom: 0;
+        height: 21px;
+        color: #333;
+        font-size: 2.2rem;
+        font-weight: normal;
+    }
 }
-.brand-list .col{
-    height: 147px  
-}
-
-
-//상품 공통 요소
-.item-title{
-    color:#333;
-}
-.item-brief{
-    color:#666;
-}
-.item-price{
-    font-size: 1.8rem;
-    color:#991717;
-}
-.product a{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-.product a:hover{
-    border:2px solid #bd1d31;
+.brand-group{
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    .brand-list{
+        height: 7 * $leading;
+        position: relative;
+        margin-bottom: 2 * $leading;
+    }
+    .brand-heading{
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 27px;
+        color: #fff;
+        text-shadow: -1px 0 4px #666, 0 1px 4px #666, 1px 0 4px #666, 0 -1px 4px #666;
+        height: $leading * 6;
+        line-height: $leading * 6;
+        text-align: center;
+    }
+    .brand-num{
+        margin-top:0;
+        margin-bottom:0;
+        color: #fff;
+        background: rgba(#000, 0.5);
+    }
+    @for $i from 1 through 4{
+        .brand-list:nth-child(#{$i}){
+            background: url(../images/brand/brand-0#{$i}.jpg);
+        }
+    }
+    label{
+    bottom: 5px;
+    right: 3px;
+    }
 }
