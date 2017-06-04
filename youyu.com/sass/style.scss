@@ -1,0 +1,620 @@
+@import 'fonts';
+@import 'setting';
+@import 'grid';
+
+
+.container:first-child{
+    padding-top: $leading * 2;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+/*Header*/
+.top{
+    font-family: "NanumSquareOTFBold", sans-serif;
+    margin-bottom: $leading * 2;
+    .col{
+    height: $leading*3;
+    }
+    h1{
+        margin-top: 0;
+        margin-bottom: 0;
+        text-align: left;
+    }
+    .logo{
+        height: 100%;
+    }
+    fieldset{
+        
+        margin: $leading/2 auto 0 auto;
+        padding: 0;
+        width: 380px;
+        border: none; 
+        position: relative;
+     
+        &:after{
+        content: '';
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 14px;
+        height: 14px;
+        background: url(../images/icons/icons.svg) no-repeat;
+        background-size: 20px auto;
+        background-position-y: -142px;
+        overflow:hidden;
+    }
+    }
+    input{
+        font-family: "NanumSquareOTFBold", sans-serif;
+        height: 42px;
+        width: 380px;
+        border: 2px solid#555656;
+        color:#999999;
+    }
+    button{
+        position: absolute;
+        overflow: hidden;
+        top:0;
+        right: 0;
+        width: 42px;
+        height: 42px;
+        background: none;
+        border: none;
+        font-size: 0;
+        cursor: pointer;
+    }
+    //로그인 
+    ul{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style: none;
+        color: #991717;
+    }
+    li{
+
+        margin-top: $leading;
+        margin-left: 5px;
+        display: inline-block;
+        a{  
+            padding: 5px 10px;
+            &:hover, &:focus{
+                border: 1px solid #991717;
+                border-radius: 2px;
+            }
+        }
+        &:last-child{
+            margin-left: 10px;
+        }
+    }
+}
+/*header-navigation*/ 
+.main-menu{
+    margin-bottom: $leading;
+    ul{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style: none;
+    }
+    li{
+        font-family: "NanumSquareOTFExtraBold", sans-serif;
+        display: inline-block;
+        width: 64px;
+        text-align: center;
+        position: relative;
+        margin-right: 20px;
+        &:last-child{
+            margin-right: 0;
+        }
+        a{
+            position: absolute;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            top:-20px;
+            left:0;
+            display: block;
+            &:focus{
+                background: #bd1d31;
+                border-radius: 2px;
+                color: #fff;
+            }
+            &:hover,&:active{
+                border-bottom: 2px solid #bd1d31;
+            }
+    }
+    }
+}
+//필터
+  .filter-toggle{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        height: $leading * 2;
+        background: #ddd;
+        color: #991717;
+        border-top: 3px solid #bd1d31;
+        position: relative;
+        &:before{
+            position: absolute;
+            left: 680px;
+            top: 14px;
+            content:'';
+            width: 16px;
+            height: 14px;
+            background: url(../images/icons/icons.svg) no-repeat;
+            background-size: 20px auto;
+            background-position: 0 -62px;
+
+        }
+
+       label{
+           font-family: "NanumSquareOTFBold", sans-serif;
+            cursor: pointer;
+       }
+       >label{
+          line-height: $leading * 2;
+       }
+        #toggle:checked ~ .filter-show{
+            display: block;
+        }
+      
+        .filter-show{
+            display: none;
+            background: #ddd;
+      
+        }
+        fieldset{
+            margin: -3px auto 0 auto;
+            padding: $leading 0 0 0;
+            border: none;
+            width: 1060px;
+        }
+        dl{
+            margin: 0;
+            display: flex;
+            color: #fff;
+          label{
+            display: block;
+            font-size: 1.2rem;
+            width: 70px;
+            height: $leading;
+            line-height: $leading;
+            background: #aaa;
+            border-radius: 2px;
+           }
+         input:checked ~ label, label:hover{
+             background: #bd1d31;
+             }
+        }
+        dt{
+            color: #333;
+            font-size: 1.8rem;
+            line-height: 21px;
+            font-family: "NanumSquareOTFRegular", sans-serif;
+        }
+        dd{
+            font-family: "NanumSquareOTFBold", sans-serif;
+        }
+        .age-filter{
+            margin-bottom: $leading;
+        }
+        .style-filter{
+            margin-bottom: $leading*2;
+        }
+        .reset-btn, .submit-btn{
+            font-family: "NanumSquareOTFBold", sans-serif;
+            border-radius: 15.5px;
+            border: none;
+            padding: 0;
+            height: 31px;
+            background: #aaa;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .reset-btn{
+            margin-right: 10px;
+            width: 85px;
+        }
+        .submit-btn{
+            margin-bottom: $leading;
+            width: 129px;
+        }
+        .reset-btn:hover,.submit-btn:hover{
+            background: #bd1d31;
+        }
+    }
+
+/*main*/
+/*배너와 팁 선택 링크 공통*/
+[class $="selector"]{
+    a{
+        display: inline-block;
+        height: 0px;
+        margin-right: 10px;
+        overflow: hidden;
+        background: #cccccc;
+        border-radius: 100%;
+        padding-top: 10px;
+        width: 10px;
+    }
+    &:last-child{
+        margin-right: 0;
+    }
+    a:hover, a:focus{
+        background: #bd1d31;
+    }
+}
+/*좋아요 버튼 공통 요소*/
+[class*="group"] label{
+    position: absolute;
+    cursor: pointer;
+    width: 20px;
+    height: 0px;
+    padding-top: 15px;
+    background: url(../images/icons/icons.svg) no-repeat;
+    background-size: 20px auto;
+    background-position-y: -110px; 
+    overflow: hidden;
+}
+[class*="group"] input:checked + label{ 
+    background-position-y: -96px;
+}
+/*타이틀 공통*/
+.best-item-title, .new-item-title, .brand-title,.tip-title,.review-title{
+    margin-bottom: 21px;
+        h3{
+            font-family: "NanumSquareOTFBold", sans-serif;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 2.2rem;
+            line-height: 21px;
+            color: #333333;
+        }
+}
+/*ul 스타일*/
+[class$="group"]{
+    margin: 0 0 42px 0;
+    padding-left: 0;
+    list-style: none;
+}
+/*배너*/
+.banner-img{
+    margin-top: 42px;
+    margin-bottom: 21px;
+    .col{
+        height: 441px;
+    }
+}
+.banner-selector{
+    margin-bottom: $leading * 2;
+    text-align: center;
+}
+/*베스트셀러, 신상품, 베스트 리뷰*/
+.best-item, .new-item, .best-review{
+    .best-item-group, .new-item-group, .review-group{
+        margin-bottom: $leading * 2;
+        padding-left: 0;
+        text-align: center;
+        .col{
+            position: relative;
+            display: block;
+            height: $leading*17; 
+            border: 1px solid #ddd;
+        }
+        img{
+            margin-top: $leading;
+            margin-bottom: $leading - 6px;
+        }
+        p{
+            text-align: left;
+            margin-left: 21px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        p:nth-child(3){
+            margin-bottom: $leading - 3px;
+        }
+    }
+    label{
+        bottom: 23px;
+        right: 18px;
+    }
+    .item-title{
+        font-family: "NanumSquareOTFBold", sans-serif;
+        color:#333;
+    }
+    .item-brief{
+        font-family: "NanumSquareOTFRegular", sans-serif;
+        color:#666;
+    }
+    .item-price{
+        font-family: "NanumSquareOTFRegular", sans-serif;
+        font-size: 1.8rem;
+        color:#991717;
+    }
+    a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    a:hover{
+      border:2px solid #bd1d31;   
+    }
+}
+
+/*브랜드*/
+.brand{
+    position: relative;
+    [class^="brand-arrow"]{
+        height: 7 * $leading;
+        width: 22px;
+        overflow: hidden;
+        border-radius: 2px;
+        border: 1px solid #ddd;
+        position: absolute;
+        top:$leading * 2;
+        background: #f0f0f0 url(../images/icons/arrow.png) no-repeat;
+        a{  
+             display: block;
+             width: 0;
+             padding-left: 22px;
+        }
+    }
+    .brand-arrow-l{
+        left: -20px;
+        background-position: 7px 69px;
+    }
+    .brand-arrow-r{
+        right: -20px;
+        background-position: -13px 69px;
+    }
+}
+
+.brand-group{
+    margin: 0;
+    .brand-list{
+        height: 7 * $leading;
+        position: relative;
+        margin-bottom: 2 * $leading;
+    }
+    .brand-heading{
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: "NanumSquareOTFExtraBold", sans-serif;
+        font-size: 27px;
+        color: #fff;
+        text-shadow: -1px 0 4px #666, 0 1px 4px #666, 1px 0 4px #666, 0 -1px 4px #666;
+        height: $leading * 6;
+        line-height: $leading * 6;
+        text-align: center;
+    }
+    .brand-num{
+        font-family: "NanumSquareOTFExtraBold", sans-serif;
+        font-size: 1.4rem;
+        margin-top:0;
+        margin-bottom:0;
+        color: #fff;
+        background: rgba(#000, 0.5);
+    }
+    @for $i from 1 through 4{
+        .brand-list:nth-child(#{$i}){
+            background: url(../images/brand/brand-0#{$i}.jpg);
+        }
+    }
+    label{
+    bottom: 5px;
+    right: 3px;
+    }
+}
+/*팁*/
+.tip{
+    position: relative;
+    .tip-group{
+        a{
+            display: block;
+            height: 231px;
+        }
+    }
+    .tip-selector{
+        position: absolute;
+        right: 0;
+        top: 0;
+        text-align: right;
+    }
+}
+/*베스트 리뷰*/
+.best-review{
+    .review-group{
+        .col{
+            height: $leading * 16;
+        }
+    }
+    .item-brief{
+        //webkit 기반 브라우저에서만 ellipsis 먹힌다... ㅜㅜ;
+        display: block;
+        display: -webkit-box;
+        max-width: 115px;
+        height: 42px;
+        -webkit-line-clamp: 2; //라인수
+        -webkit-box-orient: vertical; 
+        word-wrap:break-word;
+        text-overflow : ellipsis;
+        overflow: hidden;
+    }
+    label{
+    bottom: 66px;
+    right: 21px;
+    }
+    .rating{
+        label{
+            cursor: pointer;
+            position: relative;
+            margin-right: 2px;
+            float: right;
+            bottom: 42px;
+            right: 46px;
+            width: 14px;
+            height: 12px;
+            background: url(../images/icons/icons.png);
+            background-size: 19px auto;
+            background-position-y: -176px;
+        }
+        input:checked + label, label:hover{
+             background-position-y: -163px;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+/*footer*/
+.footer-top{
+    font-family: "NanumSquareOTFBold", sans-serif;
+    width: 100%;
+    height: 42px;
+    background: #555;
+    margin-bottom: 42px;
+    .row{
+        width: 1060px;
+        height: 42px;
+        margin: 0 auto;
+    }
+    ul{
+        margin-top: 0;
+        margin-bottom: 0;
+        line-height: 42px;
+        padding-left: 0;
+        list-style: none;
+        display: flex;
+        color: #ccc;
+        text-align: center;
+    }
+    li{
+        flex: 1 0 auto;
+        &::after{
+            content:"";
+            margin: 0 20px;
+            border-right: 1px solid #ccc;
+        }
+        &:first-child::before{
+            content:"";
+            margin-right: 20px;
+            border-right: 1px solid #ccc;
+        }
+    }
+    a{
+        display: inline-block;
+        padding: 0 20px;
+    }
+}
+footer{
+    
+    margin-bottom: 147px;
+    p{
+        margin-top:0;
+        margin-bottom: 0;
+    }
+    .info{
+        font-size: 1.2rem;
+    }
+    dl{
+        padding: 0;
+        margin: 0 5px 0 0;
+        display: inline-block;
+        dt{
+        font-family: "NanumSquareOTFExtraBold", sans-serif;
+        font-weight: bold;
+        float: left;
+        }
+        dd{
+        font-family: "NanumSquareOTFReqular", sans-serif;
+         margin-left: 0;
+         margin-right: 20px;
+         float: left;
+        }
+    }
+    .copyright{
+        font-family: "NanumSquareOTFExtraBold", sans-serif;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .sc-title{
+        font-family: "NanumSquareOTFBold", sans-serif;
+        line-height: 21px;
+        font-size: 2.2rem;
+    }
+    .sc-tel{
+        font-family: "NanumSquareOTFExtraBold", sans-serif;
+        font-size: 2.6rem;
+        color: #bd1d31;
+    }
+    .sc-time,.sc-lunch{
+        font-family: "NanumSquareOTFReqular", sans-serif;
+        font-size: 1.2rem;
+        line-height: 21px;
+    }
+}
+.links{
+    ul{
+        margin:0;
+        padding-left: 0;
+        list-style: none;
+    }
+    li{
+        width: 26px;
+        height: 26px;
+        background-size: 26px auto;
+        float: left;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin-right: 5px;
+    }
+    a{
+        padding: 5px 13px;
+    }
+    .green{
+        background: #2dc100;
+    }
+    .green:hover, .green:active, .green:focus{
+        background: url(../images/icons/icons.png) no-repeat;
+        background-size: 33px auto;
+        background-position-y: -359px;
+    }
+    .orange{
+        background: #e8741f;
+    }
+    .orange:hover, .orange:active, .orange:focus{
+        background: url(../images/icons/icons.png);
+        background-size: 33px auto;
+        background-position-y: -334px;
+    }
+    .facebook{
+        background: #475993;
+    }
+    .facebook:hover, .facebook:active, .facebook:focus{
+        background: url(../images/icons/icons.png);
+        background-size: 33px auto;
+        background-position-y: -76px;
+    }
+    .yellow{
+        background: #f29600;
+    }
+    .yellow:hover, .yellow:active, .yellow:focus{
+        background: url(../images/icons/icons.png);
+        background-size: 33px auto;
+        background-position-y: -384px;
+    }
+    .insta{
+        margin-right: 20px;
+    }
+    .insta:hover, .insta:active, .insta:focus{
+        background: url(../images/icons/icons.png);
+        background-size: 25px auto;
+        background-position-y: -95px;
+    }
+}

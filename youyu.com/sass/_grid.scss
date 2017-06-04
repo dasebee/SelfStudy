@@ -1,0 +1,110 @@
+@import 'setting';
+/*Toggle grid Module*/
+.show-grid{
+    position:relative;
+}
+.show-grid::before,
+.show-grid::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    height: $guide-height;
+}
+.show-grid::before{
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    background: linear-gradient(180deg,transparent 20px, tomato 20px);
+    background-size: 1px $leading;
+}
+.show-grid::after{
+    width: $page-width;
+    z-index: 10010;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent $half-gutter-width, $column-color $half-gutter-width, $column-color $column-width + $half-gutter-width, transparent $half-gutter-width);
+    background-size: $column-width + $gutter-width 1px;
+}
+/*Container Module*/
+.container{
+    width: $page-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*Row Module*/
+.row{
+    &::after{
+    content : ''; 
+    display : block;
+    clear : both;
+    }
+    .is-nesting {
+     & > :first-child {margin-left : 0;}
+     & > :last-child{margin-right: 0;}
+     }
+    &.is-isolate > .col {
+        margin-right: -100%;
+    }
+}
+/*Column Module*/
+.col {
+    float: left;
+    margin-left: $half-gutter-width;
+    margin-right: $half-gutter-width;
+}
+@for $i from 1 through $columns {
+    //column 폭
+    .is-#{$i} { width : column-width($i)}
+    //offset 폭
+    $offset-width: offset-width($i);
+    .is-offset-#{$i} {
+     margin-left: $offset-width;
+    .is-nesting &:first-child {
+      margin-left: $offset-width - $half-gutter-width;
+    }
+  }
+    //order 폭 
+        .is-isolate > .order-#{$i},
+        .is-isolate > .o-#{$i} {
+        margin-left: order-width($i);}
+}
+
+//hidden
+.hidden {
+  display: none;
+}
+// .a11y-hidden
+.a11y-hidden {
+  overflow: hidden;
+  position: absolute;
+  clip:     rect(0,0,0,0);
+  width:    1px;
+  height:   1px;
+  margin:   -1px;
+  border:   0;
+  padding:  0;
+  &.focusable:focus {
+    overflow: visible;
+    position: static;
+    clip:     auto;
+    width:    auto;
+    height:   auto;
+    margin:   0;
+  }
+}
+caption.a11y-hidden { position: static; }
+
+//본문 바로가기 링크
+.a11y{
+    position: absolute;
+    left: -9999em;
+}
+.a11y:focus{
+    background: #000;
+    color: #fff;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5em 2em;
+    z-index: 10;
+}

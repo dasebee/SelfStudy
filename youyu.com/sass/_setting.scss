@@ -1,0 +1,35 @@
+//기본 글꼴 사이즈 
+$base-font-size : 14px !default;
+// 행간 비율
+$leading-scale : 1.5;
+// 행간 간격
+$leading : $base-font-size * $leading-scale;
+// 토글 클래스
+$toggle-classname : 'show-grid';
+// 가이드라인 높이
+$guide-height : 1000vh;
+// 컬럼 개수
+$columns : 12;
+// 컬럼 하나의 폭
+$column-width: 70px;
+// 컬럼 가이드 색상
+$column-color: rgba(#dc8929,0.3);
+// 거터방향 
+$gutter-direction: 'split';
+// 거터 간격
+$gutter-width: 20px;
+$half-gutter-width: $gutter-width / 2;
+// 페이지 총 폭
+$page-width: ($gutter-width + $column-width) * $columns;
+// 컬럼
+@function column-width($n : 1){
+    @return $column-width * $n + $gutter-width * ($n - 1);
+}
+// offset 
+@function offset-width($n : 1){
+    @return column-width($n) + ($gutter-width + $half-gutter-width);
+}
+//isolate 
+@function order-width($n){
+    @return $half-gutter-width + ( ($gutter-width + $column-width) * ($n - 1) );
+}
