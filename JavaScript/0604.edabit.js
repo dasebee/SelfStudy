@@ -30,6 +30,7 @@ function AlphabetSoup(str) {
 //filter() 메소드는 제공된 함수로 구현된 테스트를 통과하는 모든 요소가 있는 새로운 배열을 만든다.
 function isFourLetters(arr) {
   var resultFourLetters = arr.filter(function(arr){
+    // (arr => {return arr.length ===4})
     return arr.length === 4;
   })
   return resultFourLetters;
