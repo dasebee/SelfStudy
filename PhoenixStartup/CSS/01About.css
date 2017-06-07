@@ -1,0 +1,144 @@
+html {
+  font-size: 10px;
+}
+
+body{
+  margin : 0;
+  font-size : 1.4rem;
+  font-family: 'Motserrat', sans-serif;
+}
+
+h1{
+  font-size: 3.5rem;
+}
+/*=============================================
+                   about - 01 
+=============================================*/
+.about-01 {
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto 30px auto;
+  padding-top: 285px;
+  padding-left: 128px;
+  box-sizing: border-box;
+  background: url("../images/About01.png") no-repeat;
+  background-size: contain;
+}
+.about-01 h1{
+  margin: 0 0 30px 0;
+  font-weight: 900;
+}
+.about-01 p{
+  width: 340px;
+  margin-bottom: 70px;
+}
+.about-01 a{
+  display: inline-block;
+  width: 144px;
+  height: 40px;
+  line-height: 40px;
+  background: #0081ff;
+  box-shadow: 10px 5px 10px 2px hsla(210, 100%, 50%, 0.2);
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+/*=============================================
+                    about - 02 
+=============================================*/
+.about-02{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:1200px;
+  height: 700px;
+  margin: 0 auto 30px auto;
+  padding-top: 430px;
+  box-sizing: border-box;
+  background: url("../images/About02.png") no-repeat;
+  background-size: contain;
+}
+.about-02 h1{
+  display: inline-block;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+.about-02 p{
+  width: 520px;
+  text-align: center;
+  color : #818181;
+}
+
+/*=============================================
+                   about - 03 
+=============================================*/
+.about-03{
+  width: 1200px;
+  height: 700px;
+  margin: 0 auto 30px auto;
+  padding-left: 128px;
+  box-sizing: border-box;
+}
+.about-03 .container{
+  float: left;
+}
+.about-03 h1{
+  margin: 250px 0 0 0;
+}
+.about-03 p{
+  width: 345px;
+  margin: 30px 0 0 0;
+  color : #818181;
+}
+.about-03 a{
+  display: inline-block;
+  width: 144px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 40px;
+  background: #0081ff;
+  box-shadow: 10px 5px 10px 2px hsla(210, 100%, 50%, 0.2);
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+.about-03 img{
+  float: right;
+}
+
+/*=============================================
+                   about - 04 
+=============================================*/
+
+.about-04{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 1200px;
+  height: 600px;
+  box-sizing: border-box;
+  margin: 0 auto 30px auto;
+  background: #f2f1f7;
+}
+.about-04 h1{
+  margin: 105px 0 0 0;
+  z-index: 10;
+}
+.about-04 p {
+  width: 550px;
+  margin: 20px 0 0 0;
+  color: #818181;
+  text-align: center;
+  z-index: 10;
+}
+.about-04 img{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
