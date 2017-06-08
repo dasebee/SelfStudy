@@ -95,6 +95,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # images 
-**/PhoenixStartup
+**/PhoenixStartup/PhoenixStartup-Images
 
 # End of https://www.gitignore.io/api/node,sass,windows,visualstudiocode
