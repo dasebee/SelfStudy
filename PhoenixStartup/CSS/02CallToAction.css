@@ -6,6 +6,12 @@ body{
     font-size: 1.4rem;
     font-family: 'Motserrat', sans-serif;
 }
+body * {
+    box-sizing: border-box;
+}
+div [class^="action"]{
+    margin: 0 auto 30px auto;
+}
 h1{
   font-size: 3.5rem;
 }
@@ -18,8 +24,6 @@ h1{
 .action01{
     width: 1200px;
     height: 370px;
-    margin: 0 auto 30px auto;
-    box-sizing: border-box;
     background: url("../images/CallToAction01_BG.png") no-repeat;
     background-size: cover;
 }
@@ -41,7 +45,6 @@ h1{
 .action01 input{
     width: 395px;
     height: 45px;
-    box-sizing: border-box;
     padding-left: 15px;
     background: #5b5c5d;
     border: none;
@@ -67,8 +70,6 @@ h1{
 .action02{
     width: 1200px;
     height: 500px;
-    box-sizing: border-box;
-    margin : 0 auto 30px auto;
     background: url("../images/CallToAction02_BG.png") no-repeat;
 }
 .action02 h1{
@@ -85,7 +86,6 @@ h1{
 .action02-name, .action02-email{
     width: 225px;
     height: 40px;
-    box-sizing: border-box;
     padding-left: 10px;
     border: none;
     border-radius: 5px;
@@ -115,8 +115,6 @@ h1{
     align-items: center;
     width: 1200px;
     height: 180px;
-    box-sizing: border-box;
-    margin : 0 auto 30px auto;
     background: #1b8bf9;
 }
 .action03 form{
@@ -142,3 +140,122 @@ h1{
     border-radius: 30px;
     background: #fff;
 }
+
+/*=============================================
+=                  action04                 =
+=============================================*/
+.action04{
+    width: 1200px;
+    height: 700px;
+    background: url("../images/CallToAction04_BG.png") no-repeat;
+}
+.action04 .wrapper{
+    width: 600px;
+    height: 100%;
+    background: rgba(365,365,365,0.5);
+}
+.action04 h1{
+    width: 390px;
+    margin: 0 auto;
+    padding-top : 205px;
+}
+.action04 p {
+    width: 335px; 
+    margin: 30px auto 0 auto;
+    color : #747474;
+}
+.action04 form{
+    width: 224px;
+    margin : 44px auto 0 auto;
+}
+.action04 form *{
+    width: 224px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.action04 input {
+    background: #edf0f2;
+    color: #313233;
+}
+.action04 button{
+    background: #1b8bf9;
+    color: #fff;
+}
+/*=============================================
+=                  action05                 =
+=============================================*/
+.action05{
+    width: 1200px;
+    height: 500px;
+    background: url("../images/CallToAction05_BG.png");
+}
+.action05 h1{
+    width: 550px;
+    padding-top: 150px;
+    margin: 0 auto;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+.action05 h1 span{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+}
+.action05 button{
+    display: block;
+    width: 155px;
+    height: 45px;
+    margin: 45px auto 0 auto;
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+}
+/*=============================================
+=                  action06                 =
+=============================================*/
+.action06{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    height: 500px;
+    background: url("../images/CallToAction06_BG.png") no-repeat;
+}
+.action06 h1{
+    width: 500px;
+    color: #fff;
+    text-align: center;
+}
+.action06 form{
+    width: 460px;
+    height: 120px;
+    margin-top: 75px;
+}
+.action06 form *{
+    width: 225px;
+    height: 42px;
+    border: none;
+}
+.action06 input{
+    margin-bottom: 0;
+    border-radius: 5px;
+    background: rgba(365,365,365,0.7);
+}
+.action06-name{
+    margin-right: 10px;    
+}
+.action06 button{
+    display: block;
+    margin : 37px auto 0 auto;
+    border-radius: 30px;
+    background: #1b8bf9;
+    color: #fff;
+}
+
+
