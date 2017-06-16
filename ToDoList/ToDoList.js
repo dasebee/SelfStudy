@@ -1,8 +1,15 @@
 (function(global, document, $){
     'use strict'
+
+  //-------------------------------------------------
+  //                필요한 요소들 생성 
+  //-------------------------------------------------
+    
     var container = $.selector('.container'); 
+
     //TodoList를 여는 버튼
     var open_btn = $.createEl('a');
+    
     //TodoList Conatianer 영역
     var todo_view = $.createEl('div');
     var todo_container = $.createEl('div');
@@ -14,7 +21,11 @@
     //TodoList의 List영역.
     var todo_list = $.createEl('ul');
     var index = 0; //label과 input에 들어가는 index
-
+    
+  //-------------------------------------------------
+  //              이벤트에 연결하는 함수들 
+  //-------------------------------------------------
+    
     // TodoList 토글하는 함수.
     var toggleTodoList = function(){
         var class_name = todo_view.getAttribute('class');
@@ -32,7 +43,7 @@
     //list를 추가하는 함수.
     var addTodoList = function(){
         var input_value = todo_input.value;
-        if(input_value===""){
+        if(input_value===""||input_value.trim()===""){
             alert('내용을 입력해주세요');
             throw '내용을 입력해주세요';}
         var list_item = $.createEl('li');
@@ -41,7 +52,7 @@
 
         var list_check = $.createEl('input');
         list_check.setAttribute('type','checkbox');
-        list_check.setAttribute('class','list-check a11y-hidden');
+        list_check.setAttribute('class','list-check');
         list_check.setAttribute('id','list'+index)
         
         var list_contents = $.createEl('label',input_value);
@@ -53,8 +64,31 @@
         $.appendChild(list_item,list_contents);
         $.appendChild(todo_list,list_item);
         
+        //인풋에 입력된 글씨를 지워주자.
         todo_input.value = "";
+        countList();
         return false;
+    }
+    
+    // input에 입력후 엔터 치는 것으로 list 추가. 
+    var addTodoListByEnter =function(e){
+        if(e.keyCode === 13){
+            addTodoList();
+            countList();
+        return false;
+        }
+    }
+
+    // list의 개수를 화면에 보여주는 함수
+    var countList = function(){
+        var count = $.selectorAll('li').length;
+        if (count === 1){
+           open_btn.textContent = 'You Have 1 Thing To Do';
+        }else if(count > 1){
+            open_btn.textContent = 'You Have ' + count + ' Things To Do';
+        }else{
+            open_btn.textContent = 'make your to do list';
+        }
     }
 
     //list를 삭제하는 함수.
@@ -67,14 +101,21 @@
              todo_list.removeChild(will_removed);
             }
         }
+        countList();
         return false;
     }
 
     //list를 모두 삭제하는 함수. 
     var clearAllList = function(){
         todo_list.textContent="";
+        countList();
         return false;
     }
+
+    
+  //-------------------------------------------------
+  //         만들어 둔 요소들에 속성을 추가.
+  //-------------------------------------------------
 
     // open_btn에 속성 추가.
     open_btn.setAttribute('href','');
@@ -98,7 +139,10 @@
     //TodoList의 List영역에 속성 추가.
     todo_list.setAttribute('class','todo-list');
 
-    //만든 요소들 html에 추가하기.
+  //-------------------------------------------------
+  //       속성이 추가된 요소들을 HTML에 추가
+  //-------------------------------------------------
+
     $.appendChild(container,open_btn);
     $.appendChild(todo_container,todo_input);
     $.appendChild(todo_container,todo_add);
@@ -108,13 +152,21 @@
     $.appendChild(todo_view, todo_container);
     $.appendChild(container,todo_view);
 
+
+  //-------------------------------------------------
+  //                 이벤트 연결.
+  //-------------------------------------------------
+
     // open_btn을 눌렀을 때 Todo List가 보이게 하기.
     open_btn.onclick = toggleTodoList;
 
-    // todo_add를 눌렀을 때 li가 추가되게 하기. 
+    // todo_add를 눌렀을 때 li를 추가
     todo_add.onclick = addTodoList;
 
-     // todo_remove를 눌렀을 때 li가 추가되게 하기. 
+    // 엔터로 리스트를 추가.
+    todo_input.onkeypress = addTodoListByEnter;
+    
+     // todo_remove를 눌렀을 때 li를 추가.
     todo_remove.onclick = removeTodoList;
 
     // todo_clear를 눌렀을 때 모든 li 삭제하기.

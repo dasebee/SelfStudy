@@ -11,7 +11,7 @@ a{
     text-decoration: none;
 }
 
-.a11y-hidden {
+/*.a11y-hidden {
   overflow: hidden;
   position: absolute;
   clip: rect(0, 0, 0, 0);
@@ -19,7 +19,7 @@ a{
   height: 1px;
   margin: -1px;
   border: 0;
-  padding: 0; }
+  padding: 0; }*/
   
 .container{
     width: 1200px;
@@ -65,6 +65,7 @@ a{
     border-radius: 3px;
     font-weight: bold;
     font-size: 2.5rem;
+    vertical-align: bottom;
     color : #7944a0;
 }
 .todo-input:focus {
@@ -72,7 +73,7 @@ a{
 }
 
 .todo-add, .todo-remove, .todo-clear{
-    margin: 0 15px 5px 0;
+    margin: 0 15px 0 0;
     width: 40px;
     height: 40px;
     padding: 0;
@@ -89,13 +90,16 @@ a{
     padding-left: 0;
     list-style: none;
 }
+.todo-item{
+    position: relative;
+}
 
 .list-contents{
-    display: block;
-    width: 870px;
+    display: inline-block;
+    width: 840px;
     height: 40px;
-    padding : 0 0 0 15px;
-    margin: 15px 15px 0 0;
+    padding : 0 0 0 10px;
+    margin: 15px 15px 0 -4px;
     background: #fff;
     border: none;
     border-radius: 3px;
@@ -112,14 +116,27 @@ a{
     transform: scaleX(1.005);
     color : #fff;
 }
-.list-contents::before{
-    content : "";
-    display: inline-block;
-    margin-right: 10px;
-    width: 20px;
+.list-check{
+    position: relative;
+    width: 30px;
     height: 40px;
-    vertical-align: middle;
 }
-.list-check:checked ~ .list-contents::before{
+.list-check::after{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    width: 30px;
+    height: 40px;
+    background: #fff;
+    border-radius: 5px 0 0 5px;
+}
+.list-check:checked::after{
     content: '✔';
+    padding-left: 5px;
+    background: #7944a0;
+    font-size: 2.5rem;
+    color: #fff;
 }
+
