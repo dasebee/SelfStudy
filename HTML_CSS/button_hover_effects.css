@@ -1,0 +1,81 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #17181c;
+    font: 300 1em 'Fira Sans', sans-serif;
+    text-align: center;
+    color:#fff;
+}
+button{
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    transition: 0.8s;
+}
+button:hover , button:focus{
+    color: #fff;
+}
+.fill{
+    color: #a972cb;
+}
+.fill:hover, .fill:focus{
+    border-color: #cb72aa;
+    box-shadow: inset 0 0 0 2em #cb72aa;
+}
+
+.pulse{
+    color: #ef6eae;
+}
+.pulse:hover, .pulse:focus{
+    border-color: #ef8f6e;
+    animation : pulse 1s;
+    box-shadow: 0 0 0 1em rgba(255, 255, 255, 0);
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #ef8f6e;
+  }
+}
+
+.close{
+    color: #ff7f82;
+}
+.close:hover, .close:focus{
+    border-color: #ffdc7f;
+    box-shadow: inset -3.5em 0 0 0 #ffdc7f, inset 3.5em 0 0 0 #ffdc7f;
+}
+.raise{
+    color: #ffa260;
+}
+.raise:hover, .raise:focus{
+    border-color: #e5ff60;
+    box-shadow: 0 0.5em 0.5em -0.4em #e5ff60;
+    transform: translateY(-0.25em);
+}
+.up{
+    color: #e4cb58;
+}
+.up:hover, .up:focus{
+    border-color: #94e458;
+    box-shadow: inset 0 -3em 0 0 #94e458;
+}
+.slide{
+    color: #8fc866;
+}
+.slide:hover, .slide:focus{
+    border-color: #66c887;
+    box-shadow: inset 7em 0 0 0 #66c887;
+}
+.offset{
+    color: #19bc8b;
+    box-shadow: 0.3em 0.3em 0 0 #19bc8b, inset 0.3em 0.3em 0 0 #19bc8b;
+}
+.offset:hover, .offset:focus{
+    border-color: #1973bc;
+    box-shadow: 0 0 0 0 #1973bc ,inset 7em 3em 0 0 #1973bc;
+}
