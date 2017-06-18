@@ -14,9 +14,10 @@
     var todo_view = $.createEl('div');
     var todo_container = $.createEl('div');
     var todo_input = $.createEl('input');
-    var todo_add = $.createEl('button','+');
-    var todo_remove = $.createEl('button','-');
-    var todo_clear = $.createEl('button','clear');
+    var error_text = $.createEl('span');
+    var todo_add = $.createEl('button','할일 추가');
+    var todo_remove = $.createEl('button','선택 삭제');
+    var todo_clear = $.createEl('button','모두 지우기');
 
     //TodoList의 List영역.
     var todo_list = $.createEl('ul');
@@ -43,9 +44,14 @@
     //list를 추가하는 함수.
     var addTodoList = function(){
         var input_value = todo_input.value;
-        if(input_value===""||input_value.trim()===""){
-            alert('내용을 입력해주세요');
-            throw '내용을 입력해주세요';}
+        error_text.textContent = '';
+        //내용을 입력하지 않았을 경우의 에러 표시
+        if(input_value.trim()===""){
+            error_text.textContent = '내용을 입력해주세요.';
+            return false;
+        }
+
+        //리스트를 추가.
         var list_item = $.createEl('li');
         list_item.index = index++;
         list_item.setAttribute('class', 'todo-item');
@@ -62,9 +68,9 @@
 
         $.appendChild(list_item,list_check);
         $.appendChild(list_item,list_contents);
-        $.appendChild(todo_list,list_item);
+        $.prependChild(todo_list,list_item);
         
-        //인풋에 입력된 글씨를 지워주자.
+        //리스트 추가가 완료되면 인풋에 입력된 글씨를 지워주자.
         todo_input.value = "";
         countList();
         return false;
@@ -82,10 +88,8 @@
     // list의 개수를 화면에 보여주는 함수
     var countList = function(){
         var count = $.selectorAll('li').length;
-        if (count === 1){
-           open_btn.textContent = 'You Have 1 Thing To Do';
-        }else if(count > 1){
-            open_btn.textContent = 'You Have ' + count + ' Things To Do';
+        if(count >= 1){
+            open_btn.textContent = count + '개의 할 일이 있습니다.';
         }else{
             open_btn.textContent = 'make your to do list';
         }
@@ -128,7 +132,12 @@
     todo_container.setAttribute('class', 'todo-container');
     todo_input.setAttribute('type','text');
     todo_input.setAttribute('class','todo-input');
-    todo_input.setAttribute('placeholder','Input To Do');
+    todo_input.setAttribute('aria-inalid','true');
+    todo_input.setAttribute('aria-describedby','error-text');
+    error_text.setAttribute('class', 'error');
+    error_text.setAttribute('id', 'error-text');
+    error_text.setAttribute('role', 'alert');
+    todo_input.setAttribute('placeholder','할 일을 입력해주세요.');
     todo_add.setAttribute('type','button');
     todo_add.setAttribute('class','todo-add');
     todo_remove.setAttribute('type','button');
@@ -145,6 +154,7 @@
 
     $.appendChild(container,open_btn);
     $.appendChild(todo_container,todo_input);
+    $.appendChild(todo_container,error_text);
     $.appendChild(todo_container,todo_add);
     $.appendChild(todo_container,todo_remove);
     $.appendChild(todo_container,todo_clear);

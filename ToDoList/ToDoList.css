@@ -1,6 +1,8 @@
+
 html{
-    font-size: 10px;
+  font-size: 10px;
 } 
+
 body{
     height: 100vh;
     margin: 0;
@@ -53,12 +55,13 @@ a{
     opacity: 1;
 }
 .todo-container{
+    position: relative;
     margin:0 auto;
     width: 900px;
 }
 .todo-input{
-    width: 700px;
-    height: 40px;
+    width: 870px;
+    height: 45px;
     padding : 0 0 0 15px;
     margin: 15px 15px 0 0;
     border: none;
@@ -71,23 +74,40 @@ a{
 .todo-input:focus {
     box-shadow: 2px 2px 5px #ccb3ff;
 }
+.error{
+    position: absolute;
+    top: 73px;
+    left: 0;
+    color: #7944a0;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
 
-.todo-add, .todo-remove, .todo-clear{
+.todo-container [type=button]{
+    position: absolute;
+    top: 70px;
+    right:0;
     margin: 0 15px 0 0;
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 30px;
     padding: 0;
     border: none;
-    border-radius: 100%;
-    background: #7944a0;
-    font-weight: bold;
+    border-radius: 5px;
+    background: hsl(275, 40%, 51%);
     font-size: 1.5rem;
     color : #fff;
-    
+}
+
+.todo-container .todo-add{
+    right: 220px;
+}
+.todo-container .todo-remove{
+    right: 110px;
 }
 
 .todo-list{
     padding-left: 0;
+    margin-top: 55px;
     list-style: none;
 }
 .todo-item{
@@ -136,7 +156,6 @@ a{
     content: '✔';
     padding-left: 5px;
     background: #7944a0;
-    font-size: 2.5rem;
     color: #fff;
+    font-size: 2.5rem;
 }
-

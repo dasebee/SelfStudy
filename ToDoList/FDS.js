@@ -247,6 +247,98 @@ var FDS = function(global){
     }
     return el;
   }
+
+  //입력받은 target 앞에 노드를 삽입한다. 
+  var insertBefore = function(insert, target){
+    validateElementNode(insert);
+    validateElementNode(target);
+    parent(target).insertBefore(insert, target);
+    return insert;
+  };
+
+  //insertBefore와 입력 받는 순서만 다르다. 
+  var before = function(target, insert){
+    return insertBefore(insert, target);
+  };
+  var prependChild = function(parent, child){
+    validateElementNode(parent);
+    validateElementNode(child);
+    var target = firstChild(parent);
+    //1. hasChild(parent) 조건 분기 
+    // return hasChild(parent) ? insertBefore(child, target) : appendChild(parent, child);
+    //2. 조건 target === null 조건 분기 
+    return target ? insertBefore(child, target) : appendChild(parent, child);
+  }
+
+  //target 노드 뒤에 insert 노드 삽입 유틸리티 함수
+  var insertAfter = function(insert, target){
+    var next = nextSibling(target);
+    //형제가 있으면?
+    if(next){
+      insertBefore(insert,next);
+    }else{
+      appendChild(parent(target), insert);
+    }
+    return insert;
+  };
+
+  var removeChild = function(child){
+    return parent(child).removeChild(child);
+  };
+  
+  var replaceChild = function(repalce, target){
+    validateElementNode(taget);
+    return parent(target).replaceChild(replace, target);
+  }
+
+  var hasClass = function(el, name){
+    validateElementNode(el);
+    validateError(name, '!string');
+    var el_classes = el.getAttribute('class');
+    //for문을 사용한 조건 확인 처리 예시
+    // var classes = current_classes.split(' ');
+    // for (var i =0, l=classes.length; i<l; ++i){
+    //   var _class = classes[i];
+    //   if (_class === name){
+    //     return true;
+    //   } else{
+    //     return false;
+    //   }
+    // }
+
+    var reg = new RegExp('(^|\\s)'+ name + '($|\\s)');
+    return reg.test(el_classes);
+  }
+  var addClass = function(el, name){
+    if (!hasClass(el , name)){
+      var new_value = (el.getAttribute('class')|| '' )+ ' ' + name;
+      el.setAttribute('class',new_value.trim());
+    }
+    return el;
+  }
+  var removeClass = function(el, name){
+    if (!name){
+      validateElementNode(el);
+      el.removeAttribute('class');
+    }else{
+      if (hasClass(el, name)){
+        var new_value = el.getAttribute('class').replace(name, '');
+        el.setAttribute('class', new_value.trim());
+      }
+    }
+   return el; 
+  };
+  var toggleClass = function(el, name){
+    return hasClass(el, name) ? removeClass(el, name) : addClass(el, name);
+  }
+  var radioClass = function(el, name){
+    validateElementNode(el);
+    validateError(name, '!string');
+    var old_active = query('.'+name, parent(el));
+    old_active && removeClass(old_active, name);
+    addClass(el, name);
+  }
+
   // ---------------------------------------
   // 반환: FDS 네임스페이스 객체
   return {
@@ -291,7 +383,20 @@ var FDS = function(global){
     createElement : createElement,
     createText : createText,
     appendChild : appendChild,
+    prependChild, prependChild,
     createEl : createEl,
+    insertBefore : insertBefore,
+    before : before,
+    insertAfter: insertAfter,
+    removeChild: removeChild,
+    replaceChild: replaceChild,
+
+    //class 속성 조작 : 유틸리티
+    hasClass    : hasClass,
+    addClass    : addClass,
+    removeClass : removeClass,
+    toggleClass  : toggleClass,
+    radioClass  : radioClass,
   };
 
 }(window);
