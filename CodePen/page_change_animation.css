@@ -1,0 +1,94 @@
+html{
+    font-size: 10px;
+}
+body{
+  overflow:hidden;
+  margin:0px; 
+  padding:0px;
+  background:#333;
+  font-size: 3rem;
+}
+.page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height:100vh;
+  color:rgba(255,255,255,0.5); 
+
+}
+.p-1{
+  background:#a3a948;
+}
+.p-2{
+  background:#edb92e;
+}
+.p-3{
+  background:#f85931;
+}
+.p-4{
+  background:#ce1836;
+}
+.page h1{
+    margin : 0;
+}
+
+.menu{
+  position:fixed;
+  left:30px;
+  top:30%;
+  list-style:none;
+  margin:0px;
+  padding:0px;
+}
+.menu li{
+    margin-top: -5px;
+    padding: 0;
+}
+
+.btn{
+  width:50px; 
+  height:50px;
+  padding: 0;
+  margin: 0;
+  background: #000;
+  border : none;
+  color: #fff;
+  transition: 1s;
+}
+.btn-1{
+    border-radius: 10px 10px 0 0;
+}
+.btn-4{
+    border-radius: 0 0 10px 10px;
+}
+.btn:hover{
+    background:#555;
+    cursor: pointer;
+}
+.btn:focus{
+    opacity: 0.2;
+}
+@keyframes change0{
+    0%{
+        transform : translateY(-100vh);
+    }
+    100%{
+        transform : translateY(0);
+    }
+}
+@keyframes change1{
+    100%{
+        transform : translateY(-100vh);
+    }
+}
+@keyframes change2{
+    100%{
+        transform : translateY(-200vh);
+    }
+}
+@keyframes change3{
+    100%{
+        transform : translateY(-300vh);
+    }
+}

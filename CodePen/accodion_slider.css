@@ -1,0 +1,44 @@
+html{
+    font-size: 10px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+ul{
+    display: flex;
+    width: 1200px;
+    height: 420px;
+    padding-left: 0; 
+    background: #000;
+    list-style: none;
+}
+li{
+    text-align: center;
+    line-height: 420px;
+    flex: 1 0 auto;
+    transition: flex 500ms ease-out;
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+li:nth-child(1){
+    background: purple;    
+}
+li:nth-child(2){
+    background: yellow;
+}
+li:nth-child(3){
+    background: blue
+}
+li:nth-child(4){
+    background: pink;
+}
+li:nth-child(5){
+    background: green;
+}
+li:hover{
+    flex:5;
+}
