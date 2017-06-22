@@ -131,7 +131,7 @@ a{
     text-overflow : ellipsis;
 }
 
-.list-check:checked ~ .list-contents, .list-contents:focus {
+.list-check:checked ~ .list-contents {
     background : #7944a0;
     transform: scaleX(1.005);
     color : #fff;

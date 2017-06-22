@@ -1,0 +1,134 @@
+html{
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+body{
+    margin: 0;
+}
+
+*, 
+*::after,
+*::before{
+    box-sizing: inherit;
+}
+
+
+/*=============================================
+=                 header  영역                =
+=============================================*/
+
+.header{
+    padding: 24px 16px;
+}
+.link{
+    padding: 8px 16px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 3rem;
+}
+.header .main{
+    float : left;
+}
+.header .about{
+    float: right;
+}
+.link:hover{
+    background: lightgray;
+}
+.header:after{
+    content : ''; 
+    display : block;
+    clear : both;
+}
+
+/*=====       End of header  영역      ======*/
+
+
+
+/*=============================================
+=              이미지 콘텐츠 영역              =
+=============================================*/
+
+.image-content .half{
+    float:left;
+    width: 100%;
+}
+.image-content img{
+    width: 100%;
+    margin-bottom: -5px;
+}
+
+.image-content::after{
+    content : ''; 
+    display : block;
+    clear : both;
+}
+
+/*=====    End of 이미지 콘텐츠 영역    ======*/
+
+
+/*=============================================
+=                 footer 영역                 =
+=============================================*/
+
+.footer{
+    padding: 64px 0;
+    text-align: center;
+    background: rgb(241,241,241)
+}
+.footer h2 {
+    font-size: 3rem;
+}
+.footer form p{
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+.footer img{
+    width:300px;
+    height: auto;
+    padding: 32px 0;
+}
+.footer form{
+    width: 60%;
+    margin: auto;
+    font-size: 1.3rem;
+}
+
+form * {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.footer form label{
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.footer form input{
+    height: 3.5rem;
+}
+
+.footer form button{
+    height: 3.5rem;
+    border: none;
+    background: gray;
+    color: #fff;
+}
+/*=====       End of footer 영역       ======*/
+
+
+
+
+/*=============================================
+=              미디어 쿼리 영역               =
+=============================================*/
+@media(min-width:601px){
+.image-content .half{
+    width: 50%;
+    }
+}
+
+/*=====    End of 미디어 쿼리 영역     ======*/
+

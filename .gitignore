@@ -97,4 +97,9 @@ $RECYCLE.BIN/
 # images 
 **/PhoenixStartup/PhoenixStartup-Images
 
+#RWD
+
+**/RWD
+**/ResponsiveGallery
+
 # End of https://www.gitignore.io/api/node,sass,windows,visualstudiocode
