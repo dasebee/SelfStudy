@@ -22,6 +22,54 @@
     //TodoList의 List영역.
     var todo_list = $.createEl('ul');
     var index = 0; //label과 input에 들어가는 index
+
+  //-------------------------------------------------
+  //         만들어 둔 요소들에 속성을 추가.
+  //-------------------------------------------------
+
+    // open_btn에 속성 추가.
+    open_btn.setAttribute('href','');
+    open_btn.setAttribute('role','button');
+    open_btn.setAttribute('class','todo-open-btn');
+    open_btn.textContent = 'make your to do list';
+
+    // TodoList Container 영역에 속성 추가.
+    todo_view.setAttribute('class', 'todo-view active');
+    todo_container.setAttribute('class', 'todo-container');
+    todo_input.setAttribute('type','text');
+    todo_input.setAttribute('class','todo-input');
+    todo_input.setAttribute('aria-invalid','true');
+    todo_input.setAttribute('aria-describedby','error-text');
+    error_text.setAttribute('class', 'error');
+    error_text.setAttribute('id', 'error-text');
+    error_text.setAttribute('role', 'alert');
+    todo_input.setAttribute('placeholder','할 일을 입력해주세요.');
+    todo_add.setAttribute('type','button');
+    todo_add.setAttribute('class','todo-add');
+    todo_remove.setAttribute('type','button');
+    todo_remove.setAttribute('class','todo-remove');
+    todo_clear.setAttribute('type','button');
+    todo_clear.setAttribute('class','todo-clear');
+
+    //TodoList의 List영역에 속성 추가.
+    todo_list.setAttribute('class','todo-list');
+
+
+  //-------------------------------------------------
+  //       속성이 추가된 요소들을 HTML에 추가
+  //-------------------------------------------------
+
+    $.appendChild(container,open_btn);
+    $.appendChild(todo_container,todo_input);
+    $.appendChild(todo_container,error_text);
+    $.appendChild(todo_container,todo_add);
+    $.appendChild(todo_container,todo_remove);
+    $.appendChild(todo_container,todo_clear);
+    $.appendChild(todo_container, todo_list);
+    $.appendChild(todo_view, todo_container);
+    $.appendChild(container,todo_view);
+
+
     
   //-------------------------------------------------
   //              이벤트에 연결하는 함수들 
@@ -44,12 +92,13 @@
     //list를 추가하는 함수.
     var addTodoList = function(){
         var input_value = todo_input.value;
-        error_text.textContent = '';
-        //내용을 입력하지 않았을 경우의 에러 표시
+        //내용을 입력하지 않았을 경우 에러를 표시해.
         if(input_value.trim()===""){
             error_text.textContent = '내용을 입력해주세요.';
             return false;
         }
+        //내용을 입력했다면 에러를 지워준다.
+        error_text.textContent = '';
 
         //리스트를 추가.
         var list_item = $.createEl('li');
@@ -72,6 +121,8 @@
         
         //리스트 추가가 완료되면 인풋에 입력된 글씨를 지워주자.
         todo_input.value = "";
+
+        //리스트를 추가하고 나면 할 일이 몇 개 있는지 알려주는 countList()를 호출. 
         countList();
         return false;
     }
@@ -80,7 +131,6 @@
     var addTodoListByEnter =function(e){
         if(e.keyCode === 13){
             addTodoList();
-            countList();
         return false;
         }
     }
@@ -117,50 +167,7 @@
     }
 
     
-  //-------------------------------------------------
-  //         만들어 둔 요소들에 속성을 추가.
-  //-------------------------------------------------
 
-    // open_btn에 속성 추가.
-    open_btn.setAttribute('href','');
-    open_btn.setAttribute('role','button');
-    open_btn.setAttribute('class','todo-open-btn');
-    open_btn.textContent = 'make your to do list';
-
-    // TodoList Container 영역에 속성 추가.
-    todo_view.setAttribute('class', 'todo-view active');
-    todo_container.setAttribute('class', 'todo-container');
-    todo_input.setAttribute('type','text');
-    todo_input.setAttribute('class','todo-input');
-    todo_input.setAttribute('aria-inalid','true');
-    todo_input.setAttribute('aria-describedby','error-text');
-    error_text.setAttribute('class', 'error');
-    error_text.setAttribute('id', 'error-text');
-    error_text.setAttribute('role', 'alert');
-    todo_input.setAttribute('placeholder','할 일을 입력해주세요.');
-    todo_add.setAttribute('type','button');
-    todo_add.setAttribute('class','todo-add');
-    todo_remove.setAttribute('type','button');
-    todo_remove.setAttribute('class','todo-remove');
-    todo_clear.setAttribute('type','button');
-    todo_clear.setAttribute('class','todo-clear');
-
-    //TodoList의 List영역에 속성 추가.
-    todo_list.setAttribute('class','todo-list');
-
-  //-------------------------------------------------
-  //       속성이 추가된 요소들을 HTML에 추가
-  //-------------------------------------------------
-
-    $.appendChild(container,open_btn);
-    $.appendChild(todo_container,todo_input);
-    $.appendChild(todo_container,error_text);
-    $.appendChild(todo_container,todo_add);
-    $.appendChild(todo_container,todo_remove);
-    $.appendChild(todo_container,todo_clear);
-    $.appendChild(todo_container, todo_list);
-    $.appendChild(todo_view, todo_container);
-    $.appendChild(container,todo_view);
 
 
   //-------------------------------------------------
