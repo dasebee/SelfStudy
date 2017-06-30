@@ -89,6 +89,20 @@
         return false;
     }
     
+    //Drag 시작 시 선택된 요소의 정보를 가져오는 함수
+    var dragStart = function(event){
+        event.dataTransfer.setData('text', event.target.id);
+        console.log(event.target.id);
+    };
+    var allowDrop = function(event){
+        event.preventDefault();
+    }
+    // Drop 하였을 때 추가하는 함수 
+    var drop = function(event){
+        var data = event.dataTransfer.getData('text');
+        event.target.appendChild($.selector('#'+data));
+    };
+
     //list를 추가하는 함수.
     var addTodoList = function(){
         var input_value = todo_input.value;
@@ -104,6 +118,11 @@
         var list_item = $.createEl('li');
         list_item.index = index++;
         list_item.setAttribute('class', 'todo-item');
+        list_item.setAttribute('id', 'todo-item'+index); //드래그 할때 요소의 정보를 가져오도록 id 추가
+        list_item.setAttribute('draggable', 'true');     //드래그가 가능하게 해주는 속성
+        list_item.ondragstart = dragStart.bind(event);
+        todo_list.ondragover = allowDrop.bind(event);
+        todo_list.ondrop = drop.bind(event);
 
         var list_check = $.createEl('input');
         list_check.setAttribute('type','checkbox');
@@ -165,8 +184,8 @@
         countList();
         return false;
     }
-
     
+
 
 
 
