@@ -38,11 +38,6 @@
     todo_container.setAttribute('class', 'todo-container');
     todo_input.setAttribute('type','text');
     todo_input.setAttribute('class','todo-input');
-    todo_input.setAttribute('aria-invalid','true');
-    todo_input.setAttribute('aria-describedby','error-text');
-    error_text.setAttribute('class', 'error');
-    error_text.setAttribute('id', 'error-text');
-    error_text.setAttribute('role', 'alert');
     todo_input.setAttribute('placeholder','할 일을 입력해주세요.');
     todo_add.setAttribute('type','button');
     todo_add.setAttribute('class','todo-add');
@@ -88,8 +83,7 @@
         }
         return false;
     }
-    
-    //Drag 시작 시 선택된 요소의 정보를 가져오는 함수
+   //Drag 시작 시 선택된 요소의 정보를 가져오는 함수
     var dragStart = function(event){
         event.dataTransfer.setData('text', event.target.id);
         console.log(event.target.id);
@@ -101,18 +95,36 @@
     var drop = function(event){
         var data = event.dataTransfer.getData('text');
         event.target.appendChild($.selector('#'+data));
-    };
-
+   };
+   
+    // 에러관련 aria를 추가하는 함수
+    var addError = function(){
+        todo_input.setAttribute('aria-invalid','true');
+        todo_input.setAttribute('aria-describedby','error-text');
+        error_text.setAttribute('class', 'error');
+        error_text.setAttribute('id', 'error-text');
+        error_text.setAttribute('role', 'alert');
+        error_text.textContent = '내용을 입력해주세요.';
+    }
+    // 에러가 발생하지 않았을 때 에러관련 aria 지워주는 함수.
+    var removeError = function(){
+        error_text.textContent = '';
+        todo_input.removeAttribute('aria-invalid');
+        todo_input.removeAttribute('aria-describedby');
+        error_text.removeAttribute('class');
+        error_text.removeAttribute('id');
+        error_text.removeAttribute('role');
+    }
     //list를 추가하는 함수.
     var addTodoList = function(){
         var input_value = todo_input.value;
-        //내용을 입력하지 않았을 경우 에러를 표시해.
+        //내용을 입력하지 않았을 경우 에러를 표시.
         if(input_value.trim()===""){
-            error_text.textContent = '내용을 입력해주세요.';
+            addError();
             return false;
         }
         //내용을 입력했다면 에러를 지워준다.
-        error_text.textContent = '';
+        removeError();
 
         //리스트를 추가.
         var list_item = $.createEl('li');
@@ -185,9 +197,6 @@
         return false;
     }
     
-
-
-
 
   //-------------------------------------------------
   //                 이벤트 연결.
