@@ -16,6 +16,7 @@
     var todo_input = $.createEl('input');
     var error_text = $.createEl('span');
     var todo_add = $.createEl('button','할일 추가');
+    var todo_complete = $.createEl('button', '선택 완료');
     var todo_remove = $.createEl('button','선택 삭제');
     var todo_clear = $.createEl('button','모두 지우기');
 
@@ -41,6 +42,8 @@
     todo_input.setAttribute('placeholder','할 일을 입력해주세요.');
     todo_add.setAttribute('type','button');
     todo_add.setAttribute('class','todo-add');
+    todo_complete.setAttribute('type','button');
+    todo_complete.setAttribute('class','todo-complete');
     todo_remove.setAttribute('type','button');
     todo_remove.setAttribute('class','todo-remove');
     todo_clear.setAttribute('type','button');
@@ -58,6 +61,7 @@
     $.appendChild(todo_container,todo_input);
     $.appendChild(todo_container,error_text);
     $.appendChild(todo_container,todo_add);
+    $.appendChild(todo_container,todo_complete);
     $.appendChild(todo_container,todo_remove);
     $.appendChild(todo_container,todo_clear);
     $.appendChild(todo_container, todo_list);
@@ -83,20 +87,22 @@
         }
         return false;
     }
-   //Drag 시작 시 선택된 요소의 정보를 가져오는 함수
-    var dragStart = function(event){
-        event.dataTransfer.setData('text', event.target.id);
-        console.log(event.target.id);
-    };
-    var allowDrop = function(event){
-        event.preventDefault();
-    }
-    // Drop 하였을 때 추가하는 함수 
-    var drop = function(event){
-        var data = event.dataTransfer.getData('text');
-        event.target.appendChild($.selector('#'+data));
-   };
-   
+// Drag관련    
+    //    //Drag 시작 시 선택된 요소의 정보를 가져오는 함수
+    //     var dragStart = function(event){
+    //         event.dataTransfer.setData('text', event.target.id);
+    //         console.log(event.target.id);
+    //     };
+    //     var allowDrop = function(event){
+    //         event.preventDefault();
+    //     }
+    //     // Drop 하였을 때 추가하는 함수 
+    //     var drop = function(event){
+    //         var data = event.dataTransfer.getData('text');
+    //         event.target.appendChild($.selector('#'+data));
+    //    };
+// Drag  
+
     // 에러관련 aria를 추가하는 함수
     var addError = function(){
         todo_input.setAttribute('aria-invalid','true');
@@ -130,11 +136,11 @@
         var list_item = $.createEl('li');
         list_item.index = index++;
         list_item.setAttribute('class', 'todo-item');
-        list_item.setAttribute('id', 'todo-item'+index); //드래그 할때 요소의 정보를 가져오도록 id 추가
-        list_item.setAttribute('draggable', 'true');     //드래그가 가능하게 해주는 속성
-        list_item.ondragstart = dragStart.bind(event);
-        todo_list.ondragover = allowDrop.bind(event);
-        todo_list.ondrop = drop.bind(event);
+        // list_item.setAttribute('id', 'todo-item'+index); //드래그 할때 요소의 정보를 가져오도록 id 추가
+        // list_item.setAttribute('draggable', 'true');     //드래그가 가능하게 해주는 속성
+        // list_item.ondragstart = dragStart.bind(event);
+        // todo_list.ondragover = allowDrop.bind(event);
+        // todo_list.ondrop = drop.bind(event);
 
         var list_check = $.createEl('input');
         list_check.setAttribute('type','checkbox');
@@ -169,6 +175,8 @@
     // list의 개수를 화면에 보여주는 함수
     var countList = function(){
         var count = $.selectorAll('li').length;
+        var minus = $.selectorAll('.complete').length;
+        count = count - minus;
         if(count >= 1){
             open_btn.textContent = count + '개의 할 일이 있습니다.';
         }else{
@@ -176,14 +184,33 @@
         }
     }
 
+    // 선택된 list 완료표시하는 함수
+    var completeTodoList =function(){
+      var list_item = $.selectorAll('li');
+      for(var i = 0, l=list_item.length; i<l; i++){
+            var checked_item = $.selector(':checked',list_item[i]);
+            if(checked_item){
+                var complete_item = $.parent(checked_item);
+                var last_item = $.last(todo_list);
+                var cheked_item_label = $.next(checked_item);
+                complete_item.setAttribute('class','complete');
+                cheked_item_label.style='text-decoration: line-through;'
+                todo_list.removeChild(complete_item);
+                todo_list.appendChild(complete_item);
+            }
+        }
+        countList();
+        return false;
+    }
+    
     //list를 삭제하는 함수.
     var removeTodoList = function(){
         var list_item = $.selectorAll('li');
         for(var i = 0, l=list_item.length; i<l; i++){
             var checked_item = $.selector(':checked',list_item[i]);
             if(checked_item){
-             var will_removed = $.parent(checked_item);
-             todo_list.removeChild(will_removed);
+                var will_removed = $.parent(checked_item);
+                todo_list.removeChild(will_removed);;
             }
         }
         countList();
@@ -207,6 +234,9 @@
 
     // todo_add를 눌렀을 때 li를 추가
     todo_add.onclick = addTodoList;
+
+    // todo_complete를 눌렀을 때 li 완료 표시
+    todo_complete.onclick = completeTodoList;
 
     // 엔터로 리스트를 추가.
     todo_input.onkeypress = addTodoListByEnter;
