@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>레이어 팝업과 ARIA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container columns">
+    <div class="box column is-half is-offset-one-quarter">
+      <div><a href="#">링크001</a></div>
+      <div><a href="#">링크002</a></div>
+      <div><a href="#">링크003</a></div>
+      <div>
+        <a href="#" id="layer-open">팝업열기</a>
+      </div>
+      <div class="layer-area message" id="layer" aria-hidden="ture" role="dialog" aria-labelledyby="dialogTitle">
+        <div class="message-header">
+          <h1 id="dialogTitle" tabindex="0">레이어 팝업</h1>
+        </div>
+        <ul>
+          <li><a href="#">내부링크001</a></li>
+          <li><a href="#">내부링크002</a></li>
+          <li><a href="#">내부링크003</a></li>
+        </ul>
+        <input class="button is-primary is-outlined" type="button" value="닫기" id="layer_close">
+      </div>
+      <div><a href="#">링크004</a></div>
+      <div><a href="#">링크005</a></div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="./script.js"></script>   
+</body>
+</html>
