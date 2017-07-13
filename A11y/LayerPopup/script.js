@@ -14,7 +14,6 @@
       $layer_title.focus(); 
       $layer.show();
   }
-  $layer.hide();
 
   $layer.keyup(function(e){
     var key_code = e.keyCode || e.which;

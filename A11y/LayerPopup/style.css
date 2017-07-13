@@ -1,5 +1,11 @@
+body{
+  overflow-x: visible;
+}
 .container{
   margin-top: 10px;
+}
+.box.column{
+  position: relative;
 }
 div{
   margin: 5px;
@@ -14,4 +20,15 @@ li{
 }
 .button{
   margin : 10px;
+}
+.layer-area {
+  position : absolute;
+  left : 0px;
+  top : 0px;
+  background: #fff;
+  padding: 20px;  
+  border : 4px solid #ddd;
+}
+div[aria-hidden="ture"]{
+  display: none;
 }
