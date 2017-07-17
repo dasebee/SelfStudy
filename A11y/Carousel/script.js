@@ -1,6 +1,11 @@
 (function(global, document){
  'use strict'
+  //해야할 것
+  //이미지 자동 재생, 멈춤
+  //다음 이미지가 무엇인지 알려주기. 키보드 받았을 때의 툴팁은??
 
+  //질문 
+  //인디케이터에도 각각 툴팁 표시해야 합니까???
  
  //변수들 
   var next_btn, prev_btn, indicators, panels, panel_box, img_width, active_img, next_img, prev_img, active_tab, float_img;
@@ -78,6 +83,16 @@
     forEach.call(panels, function(el){
       el.removeAttribute('style');
     })
+    showTooltip(i);
+ }
+ function showTooltip(i){
+  var next_index, prev_index, next_tooltip, prev_tooltip;
+  next_index = i === 4 ? 0 : i + 1;
+  prev_index = i === 0 ? 4 : i - 1; 
+  next_tooltip = indicators[next_index].getAttribute('aria-label');
+  prev_tooltip = indicators[prev_index].getAttribute('aria-label');
+  next_btn.setAttribute('title', next_tooltip);
+  prev_btn.setAttribute('title', prev_tooltip);
  }
 
 //이벤트 연결 함수
@@ -92,7 +107,7 @@
     })
  }
  
-
+//prototype
  Carousel.fn = Carousel.prototype;
  Carousel.fn.init = function(){
    //필요한 요소 찾기
@@ -104,13 +119,12 @@
 
     //탭과 버튼에 이벤트 연결
     bind();
-
+    showTooltip(0);
     //이미지들에 인덱스 추가
     forEach.call(panels, function(el,i){
       el.index = i;
     })
  }
-
  Carousel.fn.palyAnimation = function(){
  }
 
