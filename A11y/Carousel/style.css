@@ -2,7 +2,8 @@
   position: relative;
   margin: 0 auto;
   width: 1500px;
-  height: 100vh;
+  height: 98vh;
+  border-radius: 5px;
   overflow: hidden;           
 }
 

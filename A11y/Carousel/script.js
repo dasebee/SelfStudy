@@ -8,10 +8,11 @@
  
  
   //생성자 함수
- var Carousel = function(time){
-  this.time = time || '10s';
+ var Carousel = function(size){
+  if(!this) {throw 'new 키워드를 사용해주세요.'}
+  img_width = size;
+  Carousel.fn.init();
  }
-  
 
  //비공개 함수
  function findClass(){
@@ -50,6 +51,8 @@
    if(i===5) { i = 0; }
    changeTab(i);
    panels[i].classList.add('next-img');
+   active_img.style.transform='translateX(-1500px)';
+   active_img.style.transition='all 1s ease-in';
    setTimeout(changeClass.bind(undefined,i), 1100);
  }
  function showPrev(i){
@@ -57,9 +60,10 @@
     i = i || active_img.index - 1;
     if(i===-1) { i = 4; }
     changeTab(i);
-    panels[i].classList.add('next-img');
-    setTimeout(changeClass.bind(undefined,i), 1100);
     panels[i].classList.add('prev-img');
+    active_img.style.transform='translateX(1500px)';
+    active_img.style.transition='all 1s ease-in';
+    setTimeout(changeClass.bind(undefined,i), 1100);
  }
  function changeClass(i){
     findClass();
@@ -70,25 +74,14 @@
     if(float_img){
       float_img.classList.remove('float-img');
       panel_box.removeAttribute('style');
-      forEach.call(panels, function(el){
-        el.removeAttribute('style');
-      })
     }
+    forEach.call(panels, function(el){
+      el.removeAttribute('style');
+    })
  }
 
- 
- Carousel.fn = Carousel.prototype;
- Carousel.fn.init = function(){
-    if( !this) { throw 'new를 사용해주세요.'}
-    img_width = 1500;
-    next_btn = document.getElementsByClassName('next-button')[0];
-    prev_btn = document.getElementsByClassName('prev-button')[0];
-    indicators = document.getElementsByClassName('indicator');
-    panels = document.getElementsByClassName('slide-img');
-    panel_box = document.getElementsByClassName('panel-box')[0];
-
-
-    //탭에 이벤트 추가
+//이벤트 연결 함수
+ function bind(){
     next_btn.addEventListener('click',Carousel.fn.nextSlide);
     next_btn.onkeydown = Carousel.fn.KeyboardNavigation.bind(undefined,undefined);
     prev_btn.addEventListener('click',Carousel.fn.prevSlide);
@@ -97,11 +90,25 @@
       el.onclick=Carousel.fn.changeIndicator.bind(el,i);
       el.onkeydown = Carousel.fn.KeyboardNavigation.bind(el,i);
     })
+ }
+ 
+
+ Carousel.fn = Carousel.prototype;
+ Carousel.fn.init = function(){
+   //필요한 요소 찾기
+    next_btn = document.getElementsByClassName('next-button')[0];
+    prev_btn = document.getElementsByClassName('prev-button')[0];
+    indicators = document.getElementsByClassName('indicator');
+    panels = document.getElementsByClassName('slide-img');
+    panel_box = document.getElementsByClassName('panel-box')[0];
+
+    //탭과 버튼에 이벤트 연결
+    bind();
+
     //이미지들에 인덱스 추가
     forEach.call(panels, function(el,i){
       el.index = i;
     })
-
  }
 
  Carousel.fn.palyAnimation = function(){
@@ -135,7 +142,5 @@ global.Carousel = Carousel;
 
 (function(global){
  'use strict'
-  var img_slide =new Carousel();
-  img_slide.init();
-  global.img_slide;
+  var img_slide =new Carousel(1500);
 })(window);
