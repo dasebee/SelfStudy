@@ -109,11 +109,11 @@
       forEach.call(panels, function(el,i){
         el.index = i;
       })
-      // Carousel.fn.autoPlay();
+      Carousel.fn.autoPlay();
    },
    nextSlide : function(i, e){
-      Carousel.fn.stopPlay();
       findClass();
+      !e || Carousel.fn.stopPlay();
       var i = i || active_img.index + 1; //indicator는 선택한 대상이 i(bind에서 전달 받음), 버튼은 active의 다음 이미지가 i
       if(i===5) { i = 0; } // 마지막 이미지의 다음은 첫번째 이미지
       changeTab(i);
@@ -123,8 +123,8 @@
       setTimeout(changeClass.bind(undefined,i), 1100); //시간을 설정하지 않으면 바로 Class가 변경되어서 translate 효과를 볼 수 없다. 
    },
    prevSlide: function(i, e){
-      Carousel.fn.stopPlay();
       findClass();
+      Carousel.fn.stopPlay();
       i = i || active_img.index - 1;
       if(i===-1) { i = 4; }
       changeTab(i);
@@ -134,8 +134,8 @@
       setTimeout(changeClass.bind(undefined,i), 1100);
    },
    changeIndicator : function(i,e){
-      !e || e.preventDefault();
-      !e || Carousel.fn.stopPlay();
+      e.preventDefault();
+      Carousel.fn.stopPlay();
       findClass();
       var translate_value, position;
       //current_position없이 이미지만 이동시켰을 때, 
@@ -162,17 +162,10 @@
       }
    }, 
    autoPlay : function(){
-     var i = 1 , j = 1;
-     while (j<100){
-      timer = setTimeout(Carousel.fn.changeIndicator.bind(undefined,i), (j * 2000) + 100);
-      i = i === 5 ? 0 : i++;
-      j++;
-     }
+    timer = setInterval(Carousel.fn.nextSlide, 2000);
    },
    stopPlay : function(){
-      clearTimeout(timer);
-      console.log(timer);
-      console.log('스탑!!! 좀!!! 멈춰주라ㅜㅜ');
+      clearInterval(timer);
    }
  };
 
