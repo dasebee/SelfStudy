@@ -17,8 +17,11 @@
     var error_text = $.createEl('span');
     var todo_add = $.createEl('button','할일 추가');
     var todo_complete = $.createEl('button', '선택 완료');
+    var todo_cancel = $.createEl('button', '완료 취소');
     var todo_remove = $.createEl('button','선택 삭제');
     var todo_clear = $.createEl('button','모두 지우기');
+
+
 
     //TodoList의 List영역.
     var todo_list = $.createEl('ul');
@@ -44,10 +47,14 @@
     todo_add.setAttribute('class','todo-add');
     todo_complete.setAttribute('type','button');
     todo_complete.setAttribute('class','todo-complete');
+    todo_cancel.setAttribute('type','button');
+    todo_cancel.setAttribute('class','todo-cancel');
     todo_remove.setAttribute('type','button');
     todo_remove.setAttribute('class','todo-remove');
     todo_clear.setAttribute('type','button');
     todo_clear.setAttribute('class','todo-clear');
+
+
 
     //TodoList의 List영역에 속성 추가.
     todo_list.setAttribute('class','todo-list');
@@ -62,6 +69,7 @@
     $.appendChild(todo_container,error_text);
     $.appendChild(todo_container,todo_add);
     $.appendChild(todo_container,todo_complete);
+    $.appendChild(todo_container,todo_cancel);
     $.appendChild(todo_container,todo_remove);
     $.appendChild(todo_container,todo_clear);
     $.appendChild(todo_container, todo_list);
@@ -154,7 +162,19 @@
 
         $.appendChild(list_item,list_check);
         $.appendChild(list_item,list_contents);
+
+        var single_complete = $.createEl('button','완료');
+        var single_remove = $.createEl('button','삭제');
+
+        single_complete.setAttribute('type','button');
+        single_complete.setAttribute('class','single complete');
+        single_remove.setAttribute('type','button');
+        single_remove.setAttribute('class','single remove');
+        $.appendChild(list_item,single_complete);
+        $.appendChild(list_item,single_remove);
         $.prependChild(todo_list,list_item);
+
+        single_complete.onclick = singleComplete.bind(event);
         
         //리스트 추가가 완료되면 인풋에 입력된 글씨를 지워주자.
         todo_input.value = "";
@@ -193,10 +213,26 @@
                 var complete_item = $.parent(checked_item);
                 var last_item = $.last(todo_list);
                 var cheked_item_label = $.next(checked_item);
-                complete_item.setAttribute('class','complete');
+                complete_item.classList.add('complete');
                 cheked_item_label.style='text-decoration: line-through;'
                 todo_list.removeChild(complete_item);
-                todo_list.appendChild(complete_item);
+                $.appendChild(todo_list,complete_item);
+            }
+        }
+        countList();
+        return false;
+    }
+
+    // 완료를 취소하는 함수
+    var cancelComplete = function(){
+        var list_item = $.selectorAll('li');
+        for(var i = 0, l=list_item.length; i<l; i++){
+            var checked_item = $.selector(':checked',list_item[i]);
+            if(checked_item){
+            var cheked_item_label = $.next(checked_item);
+            var cancel_item = $.parent(checked_item);
+            cancel_item.classList.remove('complete');
+            cheked_item_label.style='';
             }
         }
         countList();
@@ -224,6 +260,15 @@
         return false;
     }
     
+    // 항목 하나만 완료하는 함수
+    var singleComplete = function(e){
+        var complete_item = $.parent(e.target);
+        var complete_item_label = $.selector('label', complete_item);
+        complete_item.classList.add('complete');
+        complete_item_label.style='text-decoration: line-through;';
+        todo_list.removeChild(complete_item);
+        $.appendChild(todo_list,complete_item);
+    }
 
   //-------------------------------------------------
   //                 이벤트 연결.
@@ -238,6 +283,9 @@
     // todo_complete를 눌렀을 때 li 완료 표시
     todo_complete.onclick = completeTodoList;
 
+    // todo_cancel 눌렀을 때 완료표시 취소
+    todo_cancel.onclick = cancelComplete;
+
     // 엔터로 리스트를 추가.
     todo_input.onkeypress = addTodoListByEnter;
     
@@ -246,5 +294,8 @@
 
     // todo_clear를 눌렀을 때 모든 li 삭제하기.
     todo_clear.onclick = clearAllList;
+
+    // 리스트 항목에 있는 버튼으로 완료 
+
 
 })(window, window.document, window.FDS);

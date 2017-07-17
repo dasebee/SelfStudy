@@ -4,7 +4,7 @@
   width: 1500px;
   height: 98vh;
   border-radius: 5px;
-  overflow: hidden;           
+   overflow: hidden;            
 }
 
 ul{
@@ -80,12 +80,12 @@ input:hover{
   transform: translateX(1500px);
   transition: all 1s ease-in;
 }
-   /* img{
+ /* img{
   width : 500px;
- }     */
-/* .float-img{
-  transition: all 1s ease-in;
-} */
+ }      */
+ /* .float-img{
+  animation: autoPlay 20s 1.2s infinite;
+}  */
 .float-img li{
   position: static;
   float: left;

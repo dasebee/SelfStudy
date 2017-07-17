@@ -207,3 +207,8 @@ button{
 button:hover{
     background: #aaa;
 }
+
+
+@media(min-width:601px){
+
+}
