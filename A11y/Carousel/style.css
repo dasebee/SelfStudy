@@ -3,7 +3,7 @@
   margin: 0 auto;
   width: 1500px;
   height: 100vh;
-  overflow: hidden;     
+  overflow: hidden;           
 }
 
 ul{
@@ -56,13 +56,10 @@ input:hover{
 }
 .panel-box{
   width : 7500px;
-
 }
 .slide-img{
   position: absolute;
   bottom: -150vh;
-  width : 100%;
-  height: auto;
 }
 .slide-img.active-img{
   left:0;
@@ -82,6 +79,19 @@ input:hover{
   transform: translateX(1500px);
   transition: all 1s ease-in;
 }
-/* img{
+   /* img{
   width : 500px;
+ }     */
+/* .float-img{
+  transition: all 1s ease-in;
 } */
+.float-img li{
+  position: static;
+  float: left;
+  bottom: auto;
+}
+.float-img::after{
+  content : ''; 
+  display : block;
+  clear : both;
+}
