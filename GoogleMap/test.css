@@ -1,0 +1,33 @@
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0; }
+
+.gutter {
+  padding: 10px; }
+
+.container-fluid {
+  padding-right: 0; }
+
+.out-row {
+  position: relative;
+  margin: 0; }
+
+img {
+  width: 100%;
+  height: auto; }
+
+.swift {
+  margin-bottom: 10px; }
+
+.map-container {
+  position: fixed;
+  padding: 0;
+  top: 0;
+  right: 0;
+  height: 100vh; }
+
+#map {
+  height: 100%; }
+
+/*# sourceMappingURL=test.css.map */
