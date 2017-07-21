@@ -1,8 +1,23 @@
+//To do 
+/**
+ * 초기 설정시의 zoom 값, 위치 범위가 넓으면 zoom을 작게 하도록. 
+ * 방에 포커스, 호버가 가면 지도의 마커의 색이 바뀐다. 
+ * infowindow의 스타일!!!!
+ * infowindow가 표시될 때. 마커가 사라지고.
+ * 표시된 info를 누르면 해당 방의 상세 페이지로 이동. 
+ * 상세 페이지의 지도는 대략적인 범위만 알려주는 동그라미만 표시함. 
+ * 
+ * 상세 페이지의 지도인지 숙소 리스트의 지도인지에 따라서 수행하는 것이 다름. 
+ * 
+ **/
+
+
 
 (function(global, document, google){
  'use strict'
   var map, markers, center_lat = 0, center_lng = 0, location = {lat: -33.91722, lng: 151.23064};
-  var map_el = document.getElementById('map');
+  var map_el = document.getElementById('map'); //마운트할 위치 찾기
+  var room = document.getElementsByClassName('room')[0].innerHTML; //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
    var locations =[    
      {lat: -33.91721, lng: 151.22630, price: '293,844' },
      {lat: -33.91539, lng: 151.22820, price: '99,327'},
@@ -24,6 +39,8 @@
      {lat: -33.91818154739766, lng: 151.2346203981781, price: '957,265'},
      {lat: -33.91727341958453, lng: 151.23348314155578, price: '479,814'}];
   
+
+//locations의 위치 데이터 값의 평균을 구해서 맵의 초기 센터위치로 지정.      
 locations.forEach(function(location){
   center_lat+= location.lat;
   center_lng+= location.lng;
@@ -31,6 +48,7 @@ locations.forEach(function(location){
 center_lat/=locations.length;
 center_lng/=locations.length;
 
+//맵 초기 설정. 
 function initMap(){
   map = new google.maps.Map(map_el, {
     center: {lat: center_lat, lng: center_lng},
@@ -38,20 +56,28 @@ function initMap(){
   });
 }
 
-  initMap();
+//마커 클릭했을 때 표시될 콘텐츠
+var infowindow = new google.maps.InfoWindow({
+          content: room
+ });
+
+initMap();
   
+// locations 배열에서 값을 가져와서 마커 설정. 
  var markers = locations.map(function(location) {
           return new google.maps.Marker({
             position: {lat: location.lat, lng: location.lng },
             map: map,
             label: location.price,
-            icon: './image/conv50.png'
+            icon: './image/conv50.png' 
           });
         });
 
+
+//각각의 마커에 이벤트 추가.         
 markers.forEach(function(marker){
-    marker.addListener('click', function() {
-         console.log('click');
+    marker.addListener('click', function(e) {
+         infowindow.open(map, marker); //infoWindow을 map의 marker 위치에서 연다. 
         });
 })
 
