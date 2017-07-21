@@ -13,10 +13,6 @@ html, body {
   position: relative;
   margin: 0; }
 
-img {
-  width: 100%;
-  height: auto; }
-
 .swift {
   margin-bottom: 10px; }
 
@@ -29,5 +25,41 @@ img {
 
 #map {
   height: 100%; }
+
+ul {
+  padding: 0;
+  list-style: none; }
+
+figure img {
+  width: 100%;
+  height: auto; }
+
+figure figcaption strong {
+  display: block;
+  font-size: 20px;
+  height: 30px;
+  line-height: 30px;
+  color: #181818; }
+
+figure figcaption .icon-area {
+  display: block;
+  text-align: right;
+  height: 30px;
+  line-height: 30px; }
+  figure figcaption .icon-area i {
+    font-size: 1.7rem;
+    margin-left: 5px; }
+
+figure figcaption em {
+  display: block;
+  font-style: normal;
+  font-size: 18px;
+  color: #181818; }
+
+figure figcaption .option {
+  display: block;
+  padding-bottom: 30px;
+  font-size: 14px;
+  color: rgba(24, 24, 24, 0.5); }
 
 /*# sourceMappingURL=test.css.map */

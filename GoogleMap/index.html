@@ -1,59 +1,70 @@
 <!DOCTYPE html>
 <html lang="ko-KR">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>구글맵 연습</title>
+    <title>Google Map Practice</title>
+    <!-- Latest compiled and minified CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="./test.css">
-</head>
-
-<body>
+    <link rel="stylesheet" href="css/test.css">
+  </head>
+  <body>
     <div class="container-fluid gutter">
-        <div class="row out-row">
-            <div class="col-md-8 col-lg-8">
-                <div class="row">
-                    <p class="col-lg-6">숙소유형 가격범위 즉시예약 환불정책 필터 추가하기</p>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place1</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place2</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place3</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place4</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place5</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place6</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place7</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place8</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4"><img class="swift" src="http://via.placeholder.com/800x600" alt="">
-                        <p class="item">place9</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-lg-4 map-container">
-                <div id="map"></div>
-            </div>
+      <div class="row out-row">
+        <div class="col-md-8 col-lg-8">
+          <div class="row">
+            <p class="col-lg-6">숙소유형 가격범위 즉시예약 환불정책 필터 추가하기</p>
+          </div>
+          <ul class="row">
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/?blur" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i><i class="fa fa-bed" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/?gravity=east" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i><i class="fa fa-female" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/?gravity=west" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-male" aria-hidden="true"></i><i class="fa fa-car" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/?gravity=west" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/?blur" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+            <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              <figure><img class="swift" src="https://unsplash.it/800/600/?blur" alt="">
+                <figcaption><strong class="col-xs-7 col-sm-7 col-md-7 col-lg-7">₩79,952</strong><span class="col-xs-5 col-sm-5 col-md-5 col-lg-5 icon-area"><i class="fa fa-car" aria-hidden="true"></i></span><em class="col-lg-12">SETTE CONI - TRULLO EDERA</em><span class="col-lg-12 option">주택 전체 · 침대 2개 · 전액 환불 가능</span></figcaption>
+              </figure>
+            </li>
+          </ul>
         </div>
+        <div class="col-md-4 col-lg-4 map-container">
+          <div id="map"></div>
+        </div>
+      </div>
     </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg6gMFuAeH6n3fc19dIJNJDaJ53eqMeWY"></script>
     <script src="./script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg6gMFuAeH6n3fc19dIJNJDaJ53eqMeWY&amp;callback=initMap" async defer></script>
-</body>
-
+  </body>
 </html>
