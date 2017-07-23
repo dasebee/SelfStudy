@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>0719 Vue Practice</title>
+</head>
+<body>
+ 
+  <div id="app">
+    {{ message }}
+    <span v-once> v-once를 사용하면 데이터 변경시에도 업데이트 되지 않는다. {{ message }}</span>
+    <div v-html="rawHtml"></div>
+    <div v-bind:id="'list-'+ number">v-bind로 속성 설정</div>
+    <div :id="number">{{ number + 1 }}</div>
+    <div>{{ ok ? 'YES' : 'NO' }}</div>
+  </div>
+<hr>
+  <!-- 디렉티브 사용  -->
+  <div id="app-2">
+    <span v-bind:title="message">
+      마우스를 올리면 동적으로 바인딩된 title을 볼 수 있다. 
+    </span>
+  </div>
+
+  <!-- v-if를 사용한 토글  -->
+  <div id="app-3">
+    <p v-if="seen">true라면 보인다.</p>
+  </div>
+
+  <!-- v-for로 목록 표시  -->
+  <div id="app-4">
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+  </div>
+
+  <!--사용자 입력 핸들링  -->
+
+  <div id="app-5">
+    <p> {{ message }}</p>
+    <button v-on:click="reverseMessage">메세지 뒤집기</button>
+    <button @click="reverseMessage">@는 v-on의 약어</button>
+  </div>
+  
+  <!-- 양식에 대한 입력과 앱 상태를 양방향으로 바인딩하는 v-model -->
+
+  <div id="app-6">
+    <p> {{ message }}</p>
+    <input v-model="message">
+  </div>
+
+
+  <script src="https://unpkg.com/vue"></script>
+  <script src="0719.js"></script>
+</body>
+</html>
