@@ -1,12 +1,19 @@
 (function(global, document){
  'use strict'
   //해야할 것
-  //이미지 자동 재생, 멈춤
-  //객체지향.... ㅜㅜ 뭐야.... 어떻게 하는데 ㅜㅜㅜㅜㅜㅜㅜ
+  //css 반응형, resize 
+  //autoplay stop했다가 다시 재생하게하는 것.   //키보드 포커스 받았을 때 autoplay stop //마우스 in,out
+  //마우스가 화면에 들어왔을 때도 재생 stop
+  //swipe 
+  //정적이지 않은 움직임 효과
 
   //질문 
-  //인디케이터에도 각각 툴팁 표시해야 합니까???
-  //키보드 포커스 툴팁은 어떻게하나요???
+  //인디케이터에도 각각 툴팁 표시해야 합니까??? 네 해야합니다. 
+  //키보드 포커스 툴팁은 어떻게하나요??? title이 아니라 커스텀으로 표시 합시다. 
+
+
+
+
  
  //변수들 
   var next_btn, prev_btn, indicators, panels, panel_box, img_width, active_img, next_img, prev_img, active_tab, float_img, timer;
