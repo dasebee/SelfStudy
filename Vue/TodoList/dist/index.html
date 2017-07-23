@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>Vue로 TodoList만들기  </title>
+  <link rel="stylesheet" href="./css/style.css"/>
 </head>
 <body>
-  <div id="app">
+  <div id="app" v-cloak="v-cloak">
     <h1 class="todo-title">Todo List</h1>
     <div class="todo-container">
-      <input type="input"/>
-      <input type="button" value="추가"/>
+      <input class="todoinput" type="input" @input="inputValue($event)"/>
+      <input type="button" value="추가" @click="addTodoData()"/>
       <ul class="todo-view">
-        <li v-for="item in todo.active">{{ item.listitem }}  </li>
+        <li v-for="todo in todos">{{ todo.content }}  </li>
       </ul>
     </div>
   </div>
