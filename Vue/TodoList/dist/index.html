@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko-KR"></html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Vue로 TodoList만들기  </title>
+</head>
+<body>
+  <div id="app">
+    <h1 class="todo-title">Todo List</h1>
+    <div class="todo-container">
+      <input type="input"/>
+      <input type="button" value="추가"/>
+      <ul class="todo-view">
+        <li v-for="item in todo.active">{{ item.listitem }}  </li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js">     </script>
+  <script src="//unpkg.com/vue"></script>
+  <script src="./todo.js"></script>
+</body>
