@@ -1,6 +1,16 @@
 (function(global, Vue){
  'use strict' 
- 
+//  해야하는 것
+//  깜빡임 해결. 
+//  checkbox - checked 
+//  is-complete class로 완료된 것 스타일 주기
+//  입력한 내용 수정
+//  all / active / complete 필터로 보기 
+
+//  접근성
+//  키보드 포커스
+//  aria
+
  //firebase 초기 설정.
   let config = {
     apiKey: "AIzaSyB1HAVHUdOrQBxXeyNmY3AzFkW8hrVtTps",
@@ -11,23 +21,7 @@
     messagingSenderId: "137140748409"
   };
   firebase.initializeApp(config);
-//   let data ={             
-//     task: [], 
-//     complete : []
-//   }         
 
-//   function addTodo(){
-//     firebase.database().ref('todolist/').set(
-//       data);}
-  
-//   addTodo();
-  
-// firebase.database().ref('todolist/').once('value', function(res){
-//   res.forEach(function(todo){
-//     console.log(todo);
-//   })
-// })
-  
   let app = new Vue({
     el: '#app',
     created(){
@@ -69,8 +63,10 @@
         firebase.database().ref(key).remove();
         this.getToDoData();
       },
-      completeTodo(key){
-        // console.log(key);
+      changeCompleteStatus(todo){
+        //  complete가 ture일때와 false일 때 나눠서 실행. 
+        todo.complete ? firebase.database().ref().child(todo.key).update({complete : false}) : firebase.database().ref().child(todo.key).update({complete : true})
+        this.getToDoData();
       }
     } 
   })
