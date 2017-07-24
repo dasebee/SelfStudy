@@ -1,13 +1,16 @@
 //To do 
 /**
  * 초기 설정시의 zoom 값, 위치 범위가 넓으면 zoom을 작게 하도록. 
- * 방에 포커스, 호버가 가면 지도의 마커의 색이 바뀐다. 
+ * 숙소 포커스 되었을 때 지도의 마커의 색이 바뀌는 것(마우스 오버는 OK). 
  * infowindow의 스타일!!!!
  * infowindow가 표시될 때. 마커가 사라지고. 레이블도 사라지고. 
  * 표시된 info를 누르면 해당 방의 상세 페이지로 이동. 
  * 상세 페이지의 지도는 대략적인 범위만 알려주는 동그라미만 표시함. 
+ * 레이블 오버랩 해결 필요. 
  * 
- * 상세 페이지의 지도인지 숙소 리스트의 지도인지에 따라서 수행하는 것이 다름. 
+ * 상세 페이지의 지도인지 숙소 리스트의 지도인지에 따라서 수행하는 것이 다름, 호스팅도 지도 있다. 
+ * 
+ * 숙소의 데이터와 지도의 데이터 연결. => db가 어떻게 되어있느냐아아아.
  * 
  **/
 
@@ -19,7 +22,7 @@
   var map_el = document.getElementById('map'); //마운트할 위치 찾기
   var rooms = document.querySelectorAll('li');
   var icon_span= '<span> 111</span>'
-  var info_window_content= document.getElementsByClassName('room')[0].innerHTML;  //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
+  var info_window_content=rooms[0].innerHTML;  //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
   var locations =[    
     {lat: -33.91721, lng: 151.22630, price: '293,844' },
     {lat: -33.91539, lng: 151.22820, price: '99,327'},
@@ -101,17 +104,19 @@ markers.forEach(function(marker){
 
 // // 숙소 리스트에 접근하였을 때, 마커의 색변경
 rooms.forEach(function(room, index){
-  room.addEventListener('mouseover', function(){
-    map_icon.fillColor = '#ff3333';
-    markers[index].setIcon(map_icon);
-  })
-  room.addEventListener('mouseleave', function(){
-    map_icon.fillColor = '#f8ae5f';
-    markers[index].setIcon(map_icon);
-  })
+  room.addEventListener('mouseover', setActiveColor.bind(null,index)) 
+  room.addEventListener('mouseleave', setDeactiveColor.bind(null,index))
+  room.addEventListener('focus', setActiveColor.bind(null,index))
+  room.addEventListener('blur', setDeactiveColor.bind(null,index))
 })
 
-
-
-
+// 마커색 변경하는 함수 
+function setActiveColor(index){
+  map_icon.fillColor = '#ff3333';
+  markers[index].setIcon(map_icon);
+}
+function setDeactiveColor(index){
+    map_icon.fillColor = '#f8ae5f';
+    markers[index].setIcon(map_icon);
+}
 })(window, window.document, window.google);
