@@ -58,11 +58,14 @@ figure figcaption em {
 
 figure figcaption .option {
   display: block;
-  padding-bottom: 30px;
   font-size: 14px;
   color: rgba(24, 24, 24, 0.5); }
 
 .map-labels {
   font-weight: bold; }
+
+li {
+  cursor: pointer;
+  margin-bottom: 30px; }
 
 /*# sourceMappingURL=style.css.map */
