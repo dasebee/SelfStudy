@@ -14,7 +14,10 @@
       <input class="todoinput" type="input" @input="inputValue($event)"/>
       <input type="button" value="추가" @click="addTodoData()"/>
       <ul class="todo-view">
-        <li v-for="todo in todos">{{ todo.content }}  </li>
+        <li v-for="todo in todos" :class="{'is-complete' : todo.complete}"> 
+          <input type="checkbox" @click="completeTodo(todo.key)"/>{{ todo.content }} 
+          <input type="button" value="삭제" @click="removeTodoData(todo.key)"/>
+        </li>
       </ul>
     </div>
   </div>

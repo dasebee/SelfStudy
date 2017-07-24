@@ -51,18 +51,27 @@
         });
       },
       inputValue(e){
+        //input에 입력된 값을 저장. 
         this.input_value = e.target.value.trim();
       },
       addTodoData(){
         if(this.input_value === ''){ throw '값을 입력해주세요.' }
         firebase.database().ref().push({
           content: this.input_value,
-          completed: false
+          complete: false
         })
         document.querySelector('.todoinput').value ='';
         this.input_value = '';
         this.getToDoData();
       },
+      removeTodoData(key){
+        //db에서 삭제
+        firebase.database().ref(key).remove();
+        this.getToDoData();
+      },
+      completeTodo(key){
+        // console.log(key);
+      }
     } 
   })
   
