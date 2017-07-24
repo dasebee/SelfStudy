@@ -11,6 +11,7 @@
  * 
  **/
 
+ 
 
 
 (function(global, document, google){
@@ -53,7 +54,7 @@ center_lng/=locations.length;
 //맵 초기 설정. 
 function initMap(){
   map = new google.maps.Map(map_el, {
-    center: {lat: center_lat, lng: center_lng},
+    center: new google.maps.LatLng(center_lat, center_lng),
     zoom: 16
   });
 }
@@ -67,18 +68,26 @@ initMap();
   
 // locations 배열에서 값을 가져와서 마커 설정. 
  var markers = locations.map(function(location) {
-          return new google.maps.Marker({
-            animation: null,
-            position: {lat: location.lat, lng: location.lng },
-            map: map,
-            label: {
-              text: location.price,
-              color: '#fff',
-              fontSize: '12px',
-              fontWeight: 'bold'},
-            icon: './image/conv50.png', 
-          });
-        });
+    return new MarkerWithLabel({
+      position: new google.maps.LatLng(location.lat, location.lng),
+      draggable: true,
+      raiseOnDrag: true,
+      map: map,
+      labelContent: location.price,
+      labelAnchor: new google.maps.Point(-5, 30),
+      labelClass: "map-labels", // the CSS class for the label
+      labelStyle: {opacity: 0.75},
+      icon:{
+        path: fontawesome.markers.COMMENT,
+        scale: 0.8,
+        strokeWeight: 1,
+        strokeColor: 'black',
+        strokeOpacity: 1,
+        fillColor: '#f8ae5f',
+        fillOpacity: 1,
+      }
+    })
+  });
 
 
 //각각의 마커에 이벤트 추가.         
@@ -87,5 +96,8 @@ markers.forEach(function(marker){
          infowindow.open(map, marker); //infoWindow을 map의 marker 위치에서 연다. 
         });
 })
+
+
+
 
 })(window, window.document, window.google);
