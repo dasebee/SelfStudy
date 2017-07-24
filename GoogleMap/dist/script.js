@@ -17,7 +17,9 @@
  'use strict'
   var map, markers, center_lat = 0, center_lng = 0, location = {lat: -33.91722, lng: 151.23064};
   var map_el = document.getElementById('map'); //마운트할 위치 찾기
-  var room = document.getElementsByClassName('room')[0].innerHTML; //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
+  var room = document.getElementsByClassName('room')[0];
+  var icon_span= '<span> 111</span>'
+  var info_window_content= document.getElementsByClassName('room')[0].innerHTML;  //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
    var locations =[    
      {lat: -33.91721, lng: 151.22630, price: '293,844' },
      {lat: -33.91539, lng: 151.22820, price: '99,327'},
@@ -58,7 +60,7 @@ function initMap(){
 
 //마커 클릭했을 때 표시될 콘텐츠
 var infowindow = new google.maps.InfoWindow({
-          content: room
+          content: info_window_content
  });
 
 initMap();
@@ -66,17 +68,22 @@ initMap();
 // locations 배열에서 값을 가져와서 마커 설정. 
  var markers = locations.map(function(location) {
           return new google.maps.Marker({
+            animation: null,
             position: {lat: location.lat, lng: location.lng },
             map: map,
-            label: location.price,
-            icon: './image/conv50.png' 
+            label: {
+              text: location.price,
+              color: '#fff',
+              fontSize: '12px',
+              fontWeight: 'bold'},
+            icon: './image/conv50.png', 
           });
         });
 
 
 //각각의 마커에 이벤트 추가.         
 markers.forEach(function(marker){
-    marker.addListener('click', function(e) {
+    marker.addListener('click', function() {
          infowindow.open(map, marker); //infoWindow을 map의 marker 위치에서 연다. 
         });
 })
