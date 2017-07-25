@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body {
   height: 100vh;
   margin: 0;
@@ -62,7 +63,24 @@ figure figcaption .option {
   color: rgba(24, 24, 24, 0.5); }
 
 .map-labels {
-  font-weight: bold; }
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: border-left;
+  border: 1px solid #000;
+  background: #ddd; }
+  .map-labels ::after {
+    content: '▼'; }
+
+.label-color-change {
+  width: 50px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: border-left;
+  border: 1px solid #000;
+  background: #00e6b8; }
 
 li {
   cursor: pointer;
