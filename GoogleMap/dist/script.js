@@ -20,21 +20,19 @@
  'use strict'
   var map, markers, center_lat = 0, center_lng = 0, location = {lat: -33.91722, lng: 151.23064};
   var map_el = document.getElementById('map'); //마운트할 위치 찾기
-  var rooms = document.querySelectorAll('li');
-  var icon_span= '<span> 111</span>'
-  var info_window_content=rooms[0].innerHTML;  //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
+  var rooms = document.querySelectorAll('li'); //숙소 리스트
   var locations =[    
-    {lat: -33.91721, lng: 151.22630, price: '293,844' },
-    {lat: -33.91539, lng: 151.22820, price: '99,327'},
-    {lat: -33.91747, lng: 151.22912, price: '317,4847'},
-    {lat: -33.91910, lng: 151.22907, price: '152,873'},
-    {lat: -33.91725, lng: 151.23011, price: '573,217'},
-    {lat: -33.91872, lng: 151.23089, price: '93,474'},
-    {lat: -33.91784, lng: 151.23094, price: '94,797'},
-    {lat: -33.91682, lng: 151.23149, price: '328,971'},
-    {lat: -33.91790, lng: 151.23463, price: '237,124'},
-    {lat: -33.91666, lng: 151.23468, price: '487,457'},
-    {lat: -33.916988, lng: 151.233640, price: '214,735'},
+    // {lat: -33.91721, lng: 151.22630, price: '293,844' },
+    // {lat: -33.91539, lng: 151.22820, price: '99,327'},
+    // {lat: -33.91747, lng: 151.22912, price: '317,4847'},
+    // {lat: -33.91910, lng: 151.22907, price: '152,873'},
+    // {lat: -33.91725, lng: 151.23011, price: '573,217'},
+    // {lat: -33.91872, lng: 151.23089, price: '93,474'},
+    // {lat: -33.91784, lng: 151.23094, price: '94,797'},
+    // {lat: -33.91682, lng: 151.23149, price: '328,971'},
+    // {lat: -33.91790, lng: 151.23463, price: '237,124'},
+    // {lat: -33.91666, lng: 151.23468, price: '487,457'},
+    // {lat: -33.916988, lng: 151.233640, price: '214,735'},
     {lat: -33.91662347903106, lng: 151.22879464019775, price: '387,574'},
     {lat: -33.916365282092855,lng:  151.22937399734496, price: '147,216'},
     {lat: -33.91665018901448, lng: 151.2282474695587, price: '138,754'},
@@ -44,14 +42,6 @@
     {lat: -33.91818154739766, lng: 151.2346203981781, price: '957,265'},
     {lat: -33.91727341958453, lng: 151.23348314155578, price: '479,814'}];
   
-var map_icon = {
-  path: fontawesome.markers.COMMENT,
-  scale: 0.8,
-  strokeWeight: 1,
-  strokeColor: 'black',
-  strokeOpacity: 1,
-  fillColor: '#f8ae5f',
-  fillOpacity: 1}      
 //locations의 위치 데이터 값의 평균을 구해서 맵의 초기 센터위치로 지정.      
 locations.forEach(function(location){
   center_lat+= location.lat;
@@ -67,13 +57,6 @@ function initMap(){
     zoom: 16
   });
 }
-
-//마커 클릭했을 때 표시될 콘텐츠
-var infowindow = new google.maps.InfoWindow({
-    content: info_window_content,
-    maxWidth: 240 //정보 창의 최대 너비
- });
-
 initMap();
 
   
@@ -92,13 +75,20 @@ initMap();
   });
 
 
-
-//각각의 마커에 이벤트 추가.         
-markers.forEach(function(marker){
+//마커 클릭했을 때 윈도우에 표시될 콘텐츠
+var infowindow = new google.maps.InfoWindow({
+    content: '', //content는 marker 클릭시 추가
+    maxWidth: 240 //정보 창의 최대 너비
+ });
+//각각의 마커에 정보창을 여는 이벤트 추가.         
+markers.forEach(function(marker,index){
   marker.addListener('click', function() {
-    infowindow.open(map, marker); //infoWindow을 map의 marker 위치에서 연다. 
+    infowindow.setContent(rooms[index].innerHTML);
+    infowindow.open(map, marker); //정보창을 map의 marker 위치에서 연다. 
   });
 })
+
+//지도 클릭시 정보창 닫기
 google.maps.event.addListener(map, 'click', function() {
   infowindow.close()
 });
