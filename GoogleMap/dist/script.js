@@ -22,7 +22,7 @@
   var map_el = document.getElementById('map'); //마운트할 위치 찾기
   var rooms = document.querySelectorAll('li');
   var icon_span= '<span> 111</span>'
-  var info_window_content='<div class="info-window">' + rooms[0].innerHTML +'</div>';  //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
+  var info_window_content=rooms[0].innerHTML;  //innerHTML 안하면 요소자체가 infowindow로 이동해 버린다!
   var locations =[    
     {lat: -33.91721, lng: 151.22630, price: '293,844' },
     {lat: -33.91539, lng: 151.22820, price: '99,327'},
@@ -70,7 +70,8 @@ function initMap(){
 
 //마커 클릭했을 때 표시될 콘텐츠
 var infowindow = new google.maps.InfoWindow({
-          content: info_window_content
+    content: info_window_content,
+    maxWidth: 240 //정보 창의 최대 너비
  });
 
 initMap();
@@ -98,6 +99,9 @@ markers.forEach(function(marker){
     infowindow.open(map, marker); //infoWindow을 map의 marker 위치에서 연다. 
   });
 })
+google.maps.event.addListener(map, 'click', function() {
+  infowindow.close()
+});
 
 
 
@@ -114,7 +118,7 @@ function setActiveColor(index){
   markers[index].label.setStyles() // Force label to redraw (makes update visible)
 }
 function setDeactiveColor(index){
-    markers[index].labelClass="map-labels";
-    markers[index].label.setStyles()
+  markers[index].labelClass="map-labels";
+  markers[index].label.setStyles()
 }
 })(window, window.document, window.google);
