@@ -63,24 +63,41 @@ figure figcaption .option {
   color: rgba(24, 24, 24, 0.5); }
 
 .map-labels {
-  width: 50px;
-  height: 20px;
-  line-height: 20px;
+  position: relative;
+  padding: 2px 10px;
+  line-height: 25px;
   text-align: center;
-  font-weight: border-left;
-  border: 1px solid #000;
-  background: #ddd; }
-  .map-labels ::after {
-    content: '▼'; }
+  font-weight: bold;
+  color: #fff;
+  background: #000;
+  overflow: visible !important; }
+
+.map-labels::after {
+  content: '▼';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  color: #000;
+  font-size: 13px; }
 
 .label-color-change {
-  width: 50px;
-  height: 20px;
-  line-height: 20px;
+  position: relative;
+  padding: 2px 10px;
+  line-height: 25px;
   text-align: center;
-  font-weight: border-left;
-  border: 1px solid #000;
-  background: #00e6b8; }
+  font-weight: bold;
+  background: #00e6b8;
+  overflow: visible !important; }
+
+.label-color-change::after {
+  content: '▼';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  color: #00e6b8;
+  font-size: 13px; }
 
 li {
   cursor: pointer;

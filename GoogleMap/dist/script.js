@@ -40,7 +40,7 @@
     {lat: -33.91608037421864, lng: 151.23288232673644, price: '931,874'},
     {lat: -33.91851096391805, lng: 151.2344058214569, price: '587,122'},
     {lat: -33.91818154739766, lng: 151.2346203981781, price: '957,265'},
-    {lat: -33.91727341958453, lng: 151.23348314155578, price: '479,814'}];
+    {lat: -33.91727341958453, lng: 151.23348314155578, price: '1,479,814'}];
   
 //locations의 위치 데이터 값의 평균을 구해서 맵의 초기 센터위치로 지정.      
 locations.forEach(function(location){
@@ -68,7 +68,7 @@ initMap();
       raiseOnDrag: true,
       map: map,
       labelContent: location.price,
-      labelAnchor: new google.maps.Point(-5, 30),
+      labelAnchor: new google.maps.Point(20, 30),
       labelClass: "map-labels", // the CSS class for the label
       icon: ' '
     })
