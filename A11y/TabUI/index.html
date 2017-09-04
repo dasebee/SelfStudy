@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <title>Tab UI</title>
+</head>
+<body>
+  <div class="tab-interface">
+    <ul class="tab-list" role="tablist">
+      <li role="presentation" class="active-tab">
+        <a href class="tab" role="tab" aria-selected="true" aria-controls="tabpanel1">tab1</a>
+      </li>
+      <li role="presentation">
+        <a href class="tab" role="tab" aria-selected="false" aria-controls="tabpanel2">tab2</a>
+      </li>
+      <li role="presentation">
+        <a href class="tab" role="tab" aria-selected="false" aria-controls="tabpanel3">tab3</a>
+      </li>        
+    </ul>
+    <div class="tab-panel active-panel" role="tabpanel" aria-expanded="true" id="tabpanel1" aria-labelledby="tabpanel1">
+      <ul>
+        <li>
+          <a href="#"> tab1 - link1</a>
+        </li>
+        <li>
+          <a href="#"> tab2 - link2</a>
+        </li>
+        <li>
+          <a href="#"> tab3 - link3</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-panel" role="tabpanel" aria-expanded="false" id="tabpanel2" aria-labelledby="tabpanel2">
+      <ul>
+        <li>
+          <a href="#"> tab2 - link1</a>
+        </li>
+        <li>
+          <a href="#"> tab2 - link2</a>
+        </li>
+        <li>
+          <a href="#"> tab2 - link3</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-panel" role="tabpanel" aria-expanded="false" id="tabpanel3" aria-labelledby="tabpanel3">
+      <ul>
+        <li>
+          <a href="#"> tab3 - link1</a>
+        </li>
+        <li>
+          <a href="#"> tab3 - link2</a>
+        </li>
+        <li>
+          <a href="#"> tab3 - link3</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<script src="./script.js"></script>
+</body>
+</html>
