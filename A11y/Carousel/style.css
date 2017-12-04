@@ -85,9 +85,6 @@ img{
   height: auto;
   border-radius: 5px;
  }      
- /* .float-img{
-  animation: autoPlay 20s 1.2s infinite;
-}  */
 .float-img li{
   position: static;
   float: left;
@@ -97,22 +94,4 @@ img{
   content : ''; 
   display : block;
   clear : both;
-}
-
-@media screen and (min-width : 960px){
-
-}
-
-@media screen and (min-width : 768px) and (max-width : 959px){
-  .indicator {
-    width: 15px;
-    height: 15px;
-  }
-  input{
-    padding: 10px;
-  }
-}
-
-@media screen and (max-width : 767px){
-
 }
