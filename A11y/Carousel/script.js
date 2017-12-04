@@ -36,6 +36,17 @@
      indicators[i].classList.add('active-tab');
      indicators[i].setAttribute('aria-selected', true);
   }
+  function resetIndicatorMove() {
+     //인디케이터로 이미지 전환했을 때, float left한 것 제거. 
+     if(float_img){
+       float_img.classList.remove('float-img');
+       panel_box.removeAttribute('style');
+     }
+     //translateX로 이동한 것 제거.
+     forEach.call(panels, function(el){
+       el.removeAttribute('style');
+     })
+  } 
    // 이미지 변경 후, 속성(class, style) 추가 및 삭제 
   function changeClass(i){
      findClass();
@@ -48,15 +59,9 @@
      !next_img || next_img.classList.remove('next-img');
      !prev_img || prev_img.classList.remove('prev-img');
  
-     //인디케이터로 이미지 전환했을 때, float left한 것 제거. 
-     if(float_img){
-       float_img.classList.remove('float-img');
-       panel_box.removeAttribute('style');
-     }
-     //translateX로 이동한 것 제거.
-     forEach.call(panels, function(el){
-       el.removeAttribute('style');
-     })
+     // 인디케이터 조작시에 추가한 속성 제거(float, style)
+     resetIndicatorMove();
+     
      // Class 수정 완료하면 Tooltip 표시 함수 호출 
      // active-class가 변경 될 때마다 실행 시켜야 하니까 여기서 호출. 
      showTooltip(i);
@@ -115,8 +120,8 @@
        Carousel.fn.autoPlay();
     },
     nextSlide : function(i, e){
+       Carousel.fn.stopPlay();
        findClass();
-       !e || Carousel.fn.stopPlay();
        var i = i || active_img.index + 1; //indicator는 선택한 대상이 i(bind에서 전달 받음), 버튼은 active의 다음 이미지가 i
        if(i===5) { i = 0; } // 마지막 이미지의 다음은 첫번째 이미지
        changeTab(i);
@@ -126,8 +131,8 @@
        setTimeout(changeClass.bind(undefined,i), 1100); //시간을 설정하지 않으면 바로 Class가 변경되어서 translate 효과를 볼 수 없다. 
     },
     prevSlide: function(i, e){
-       findClass();
        Carousel.fn.stopPlay();
+       findClass();
        i = i || active_img.index - 1;
        if(i===-1) { i = 4; }
        changeTab(i);
@@ -141,10 +146,10 @@
        Carousel.fn.stopPlay();
        findClass();
        var translate_value, position;
-       //current_position없이 이미지만 이동시켰을 때, 
+       //ul을 이동시키지 않고 li만 이동시키면 
        //현재 보여지고 있는 이미지가 아닌 첫번째 이미지부터 시작해서 위치가 이동되어 버린다. 
        var current_position = active_img.index * img_width; //이미지를 감싸고 있는 ul이 이동할 위치(현재 표시되고 있는 이미지의 위치)
-       var target_position = ((i * img_width) - current_position) *-1; //이미지가 이동 할 위치,  ul이 움직인 만큼은 빼준다.
+       var target_position = ((i * img_width) - current_position) *-1; //이미지가 이동 할 위치, ul이 움직인 만큼은 빼준다. *-1로 이동할 방향이 정해진다
        panel_box.classList.add('float-img'); //float left 속성을 주어서 이미지를 한줄로 만든다. 
        panel_box.style.transform='translateX(-'+ current_position+ 'px)';
        forEach.call(panels, function(el){
@@ -172,8 +177,8 @@
     }
   };
  
- 
  global.Carousel = Carousel;
+ 
  })(window, window.document);
  
  (function(global){
